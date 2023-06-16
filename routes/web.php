@@ -16,4 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/login/registrarse', function () {
+    return view('login.registrarse');
+});
+Route::get('/login', function () {
+    return view('login.login');
+});
+Route::get('/inventario', function () {
+    return view('inventario.inventario');
+});
+Route::get('/pantalla_principal', function () {
+    return view('pantalla_principal.pantalla_principal');
+});
+Route::get('/perfil', function () {
+    return view('perfil.perfil');
+});
+Route::get('/pokedex', function () {
+    return view('pokedex.pokedex');
+});
