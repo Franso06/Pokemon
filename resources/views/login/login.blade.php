@@ -91,7 +91,7 @@
     <div class="sidenav">
         <div class="login-main-text">
             <h2>Pokemon<br> Ingresa para disfrutar.</h2>
-            <p>Ingresa o registrate para provar la aventura.</p>
+            <p>Ingresa o registrate para probar la aventura.</p>
         </div>
     </div>
     <div class="main">
