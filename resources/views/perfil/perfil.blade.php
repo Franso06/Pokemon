@@ -6,10 +6,6 @@
      <link rel="stylesheet" href="C:\laragon\www\Pokemon\resources\views\perfil\style.css">
   </head>
   <style>
-    *{
-      margin: 0px;
-      padding: 0px;
-    }
     .container-perfil {
     
     font-family: Arial, sans-serif;
@@ -27,6 +23,32 @@
       width:auto;
       height:auto;
     }
+
+    .profile-form label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+    .profile-form input[type="text"],
+    .profile-form input[type="email"],
+    .profile-form input[type="password"],
+    .profile-form input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+    
+    .profile-form input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+      
+    }
+    .foto{
+        text-align: left;
+      }
   </style>
 
 
@@ -43,19 +65,19 @@
                   
                 </div>
 
-              <div class="col-3">
+              <div class>
                   <label for="formGroupExampleInput" class="form-label">Nombre</label>
                   <input type="text" id="nombre" name="nombre" readonly>
                   <button type="button" onclick="habilitarEdicion('nombre')">Editar</button><br>
               </div>
 
-              <div class="col-3">
+              <div class>
                   <label for="formGroupExampleInput" class="form-label">Correo</label>
                   <input type="correo" id="correo" name="correo" readonly>
                   <button type="button" onclick="habilitarEdicion('correo')">Editar</button><br>
               </div>
 
-             <div class="col-3">
+             <div class>
                   <label for="formGroupExampleInput" class="form-label">Contraseña</label>
                   <input type="password" id="contrasena" name="contrasena" readonly>
                   <button type="button" onclick="habilitarEdicion('contrasena')">Editar</button><br>
