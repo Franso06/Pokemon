@@ -144,6 +144,9 @@
     }
     fetchItems(9);
 
+        let limit = 8;
+        let offset = 1;
+        
     function createItem(item) {
         const card = document.createElement('div');
         card.classList.add('item-block');
