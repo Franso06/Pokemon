@@ -45,17 +45,20 @@
 
               <div class="col-3">
                   <label for="formGroupExampleInput" class="form-label">Nombre</label>
-                  <input type="text" class="form-control" id="nombre" placeholder="">
+                  <input type="text" id="nombre" name="nombre" readonly>
+                  <button type="button" onclick="habilitarEdicion('nombre')">Editar</button><br>
               </div>
 
               <div class="col-3">
                   <label for="formGroupExampleInput" class="form-label">Correo</label>
-                  <input type="text" class="form-control" id="correo" placeholder="">
+                  <input type="correo" id="correo" name="correo" readonly>
+                  <button type="button" onclick="habilitarEdicion('correo')">Editar</button><br>
               </div>
 
              <div class="col-3">
                   <label for="formGroupExampleInput" class="form-label">Contraseña</label>
-                  <input type="password" class="form-control" id="password" placeholder="">
+                  <input type="password" id="contrasena" name="contrasena" readonly>
+                  <button type="button" onclick="habilitarEdicion('contrasena')">Editar</button><br>
               </div>
 
               <button input type="submit" value="Guardar" onclick="cambiarFotoPerfil()" color-style:green;>Cambiar</button>
@@ -70,6 +73,37 @@
 
 
   <script>
+    function habilitarEdicion(campo) {
+      var input = document.getElementById(campo);
+      var button = input.nextElementSibling;
+      
+      if (input.readOnly) {
+        input.readOnly = false;
+        button.textContent = 'Guardar';
+        button.addEventListener('click', function() {
+          guardarCambios(campo);
+        });
+      } else {
+        input.readOnly = true;
+        button.textContent = 'Editar';
+        button.removeEventListener('click', function() {
+          guardarCambios(campo);
+        });
+      }
+    }
+    
+    function guardarCambios(campo) {
+      var input = document.getElementById(campo);
+      
+      
+      
+      // se modifica los campos 
+      console.log('Campo:', campo);
+      console.log('Valor:', input.value);
+    }
+
+
+
     function cambiarFotoPerfil() {
     var fileInput = document.getElementById('nuevaFotoPerfil');
     var file = fileInput.files[0];
