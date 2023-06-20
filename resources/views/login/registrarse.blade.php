@@ -3,6 +3,7 @@
 <head>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script> type="test/javascript" src="funciones.js"</script>
+    <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <title>Registrarse</title>
@@ -99,7 +100,20 @@
         }
         h2,p{
             color: rgb(193, 32, 38);
+            font-size: 28px;
+        }
+        .logo_pokemon{
+            width: 60%; /* Reduce el ancho a la mitad */
+            height: auto; /* Mantiene la proporción original de la imagen */
+        }
 
+        .custom-image {
+            position: absolute;
+            top: 67%;
+            left: 60%;
+            width: 20%;
+            hi
+            transform: translate(-50%, -50%);
         }
     </style>
 </head>
@@ -107,8 +121,15 @@
 
     <div class="sidenav">
         <div class="login-main-text">
-            <h2>Pokemon<br>Ingresa para disfrutar.</h2>
-            <p>Ingresa o registrate para probar la aventura.</p>
+            <img class="logo_pokemon"src="{{ asset('imagenes/imagen_logo_pokemon.png') }}">
+
+            
+            <div class="container">
+                <img src="/imagenes/imagen_charmander.png" alt="Imagen" class="custom-image">
+            </div>
+            
+            
+            
         </div>
     </div>
     <div class="main">
@@ -140,7 +161,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Repita contraseña</label>
+                        <label>Reingrese su contraseña</label>
                         <input id="contraseña2" name="contraseña2" type="password" class="form-control"
                             placeholder="Repita contraseña">
                         <div id="contraseña2_help_block" class="form-text" style="">
