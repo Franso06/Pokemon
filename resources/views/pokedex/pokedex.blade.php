@@ -1,5 +1,5 @@
 <head>
-    <title>Pokedex</title>
+    <title>Inventario</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
@@ -114,141 +114,58 @@
     <div class="pokemon-container">
 
     </div>
-    <nav class="pagination" aria-label="...">
-        <ul class="pagination">
-            <li class="page-item" id="previous">
-                <a class="page-link" href="#" tabindex="-1">Anterior</a>
-            </li>
-            <li class="page-item" id="next">
-                <a class="page-link" href="#">Siguiente</a>
-            </li>
-        </ul>
-    </nav>
-    <div id="spinner" class="spinner-border text-light" role="status">
-        <span class="visually-hidden">Loading...</span>
-    </div>
-    <script>
-        const pokemonContainer = document.querySelector(".pokemon-container");
-        const spinner = document.querySelector("#spinner");
-        const previous = document.querySelector("#previous");
-        const next = document.querySelector("#next");
-
-        let limit = 8;
-        let offset = 1;
-
-        previous.addEventListener("click", () => {
-            if (offset != 1) {
-                offset -= 9;
-                removeChildNodes(pokemonContainer);
-                fetchPokemons(offset, limit);
-            }
-        });
-
-        next.addEventListener("click", () => {
-            offset += 9;
-            removeChildNodes(pokemonContainer);
-            fetchPokemons(offset, limit);
-        });
-
-        function fetchPokemon(id) {
-            fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-                .then((res) => res.json())
-                .then((data) => {
-                    createPokemon(data);
-                    spinner.style.display = "none";
-                });
-        }
-
-        function fetchPokemons(offset, limit) {
-            spinner.style.display = "block";
-            for (let i = offset; i <= offset + limit; i++) {
-                fetchPokemon(i);
-            }
-        }
-
-        function createPokemon(pokemon) {
-            const flipCard = document.createElement("div");
-            flipCard.classList.add("flip-card");
-
-            const cardContainer = document.createElement("div");
-            cardContainer.classList.add("card-container");
-
-            flipCard.appendChild(cardContainer);
-
-            const card = document.createElement("div");
-            card.classList.add("pokemon-block");
-
-            const spriteContainer = document.createElement("div");
-            spriteContainer.classList.add("img-container");
-
-            const sprite = document.createElement("img");
-            sprite.src = pokemon.sprites.front_default;
-
-            spriteContainer.appendChild(sprite);
-
-            const number = document.createElement("p");
-            number.textContent = `#${pokemon.id.toString().padStart(3, 0)}`;
-
-            const name = document.createElement("p");
-            name.classList.add("name");
-            name.textContent = pokemon.name;
-
-            card.appendChild(spriteContainer);
-            card.appendChild(number);
-            card.appendChild(name);
-
-            const cardBack = document.createElement("div");
-            cardBack.classList.add("pokemon-block-back");
-
-            cardBack.appendChild(progressBars(pokemon.stats));
-
-            cardContainer.appendChild(card);
-            cardContainer.appendChild(cardBack);
-            pokemonContainer.appendChild(flipCard);
-        }
-
-        function progressBars(stats) {
-            const statsContainer = document.createElement("div");
-            statsContainer.classList.add("stats-container");
-
-            for (let i = 0; i < 3; i++) {
-                const stat = stats[i];
-
-                const statPercent = stat.base_stat / 2 + "%";
-                const statContainer = document.createElement("stat-container");
-                statContainer.classList.add("stat-container");
-
-                const statName = document.createElement("p");
-                statName.textContent = stat.stat.name;
-
-                const progress = document.createElement("div");
-                progress.classList.add("progress");
-
-                const progressBar = document.createElement("div");
-                progressBar.classList.add("progress-bar");
-                progressBar.setAttribute("aria-valuenow", stat.base_stat);
-                progressBar.setAttribute("aria-valuemin", 0);
-                progressBar.setAttribute("aria-valuemax", 200);
-                progressBar.style.width = statPercent;
-
-                progressBar.textContent = stat.base_stat;
-
-                progress.appendChild(progressBar);
-                statContainer.appendChild(statName);
-                statContainer.appendChild(progress);
-
-                statsContainer.appendChild(statContainer);
-            }
-
-            return statsContainer;
-        }
-
-        function removeChildNodes(parent) {
-            while (parent.firstChild) {
-                parent.removeChild(parent.firstChild);
-            }
-        }
-
-        fetchPokemons(offset, limit);
-    </script>
+    
 </body>
+<script>
+    const pokemonContainer = document.querySelector(".pokemon-container");
+
+    function fetchPokemon(id) {
+        fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+            .then((res) => res.json())
+            .then((data) => {
+                createPokemon(data);
+                console.log(data);
+            }); //createItem(data) para ingresar todos los items      
+    }
+
+        fetchPokemon(1);
+        fetchPokemon(4);
+        fetchPokemon(7);
+        fetchPokemon(25);
+    function createPokemon(pokemon) {
+        const card = document.createElement('div');
+        card.classList.add('pokemon-block');
+
+        const spriteContainer = document.createElement('div');
+        spriteContainer.classList.add('img-container');
+
+        const sprite = document.createElement('img');
+        sprite.src = pokemon.sprites.front_default;
+
+        spriteContainer.appendChild(sprite);
+
+        const name = document.createElement('p');
+        name.classList.add('name');
+        name.textContent = pokemon.name;
+
+        const vida = document.createElement('p');
+        vida.classList.add('vida');
+        vida.textContent = "Vida: 1000";
+
+        const daño = document.createElement('p');
+        daño.classList.add('daño');
+        daño.textContent = "Daño: 50";
+
+        const armor = document.createElement('p');
+        armor.classList.add('armor');
+        armor.textContent = "Armadura: 100";
+
+        card.appendChild(spriteContainer);
+        card.appendChild(name);
+        card.appendChild(vida);
+        card.appendChild(daño);
+        card.appendChild(armor);
+        pokemonContainer.appendChild(card);
+    }
+
+</script>
