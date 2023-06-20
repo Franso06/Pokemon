@@ -12,11 +12,11 @@
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 300px;
-    margin-left: 350px;
+    margin-left: 500px;
      
     }
-    .general {
-      background-image: url("https://www.gratistodo.com/wp-content/uploads/2016/07/pokemon-wallpapers-3.png");
+    body {
+      background-image: url("fondo.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -54,44 +54,35 @@
 
 
   <body>
-    
-
     <div class="general">
-
           <div class="container-perfil">
-                <h2>Gestion de perfil</h2>
-                <div class="fotoPerfil">
-                  <img id="imagenPerfil" src="ruta-a-la-imagen-actual.jpg" style="width: 200px; height: 200px;" alt="Foto de perfil">
-                  <input type="file" id="nuevaFotoPerfil" accept="image/*">
+            <div class="card" style="width: 18rem;">
+                <img id="imagenPerfil" src="ruta-a-la-imagen-actual.jpg" style="width: 200px; height: 200px;" alt="Foto de perfil">
+                <input type="file" id="nuevaFotoPerfil" accept="image/*">
+                <div class="card-body">
+                <div class>
+                  <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                  <input type="text" id="nombre" name="nombre" readonly>
+                  <button type="button" class="btn btn-primary" onclick="habilitarEdicion('nombre')">Editar</button><br>
+                </div>
                   
+                <div class>
+                    <label for="formGroupExampleInput" class="form-label">Correo</label>
+                    <input type="correo" id="correo" name="correo" readonly>
+                    <button type="button" class="btn btn-primary" onclick="habilitarEdicion('correo')">Editar</button><br>
                 </div>
 
               <div class>
-                  <label for="formGroupExampleInput" class="form-label">Nombre</label>
-                  <input type="text" id="nombre" name="nombre" readonly>
-                  <button type="button" onclick="habilitarEdicion('nombre')">Editar</button><br>
-              </div>
+                    <label for="formGroupExampleInput" class="form-label">Contraseña</label>
+                    <input type="password" id="contrasena" name="contrasena" readonly>
+                    <button type="button"class=" btn btn-primary" onclick="habilitarEdicion('contraseña')">Editar</button><br>
+                </div>
 
-              <div class>
-                  <label for="formGroupExampleInput" class="form-label">Correo</label>
-                  <input type="correo" id="correo" name="correo" readonly>
-                  <button type="button" onclick="habilitarEdicion('correo')">Editar</button><br>
+                  <button input type="button" class="btn btn-success" onclick="combinarBotones()">Cambiar</button><br>
+                </div>
               </div>
-
-             <div class>
-                  <label for="formGroupExampleInput" class="form-label">Contraseña</label>
-                  <input type="password" id="contrasena" name="contrasena" readonly>
-                  <button type="button" onclick="habilitarEdicion('contrasena')">Editar</button><br>
-              </div>
-
-              <button input type="submit" value="Guardar" onclick="cambiarFotoPerfil()" color-style:green;>Cambiar</button>
-        
           </div>
-
     </div>  
-    
-    
-
   <body>
 
 
