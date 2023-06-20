@@ -114,62 +114,75 @@
     <div class="item-container">
 
     </div>
-    <nav class="pagination" aria-label="...">
-        <ul class="pagination">
-            <li class="page-item" id="previous">
-                <a class="page-link" href="#" tabindex="-1">Anterior</a>
-            </li>
-            <li class="page-item" id="next">
-                <a class="page-link" href="#">Siguiente</a>
-            </li>
-        </ul>
-    </nav>
+
 </body>
 <script>
-    const itemContainer = document.querySelector(".item-container");
+    class Item {
 
-    function fetchItem(id) {
-        fetch(`https://pokeapi.co/api/v2/item/${id}/`)
-            .then((res) => res.json())
-            .then((data) => {
-                createItem(data);
-                console.log(data);
-            }); //createItem(data) para ingresar todos los items      
-    }
-
-    function fetchItems(number) {
-        for (let i = 1; i <= number; i++) {
-            fetchItem(i);
+        constructor(nombre, efecto) {
+            this.nombre = nombre;
+            this.efecto = efecto;
         }
     }
-    fetchItems(9);
+    const armadura = new Item(
+        "Armadura",
+        "Defensa +10"
+    )
 
-        let limit = 8;
-        let offset = 1;
-        
-    function createItem(item) {
+    const casco = new Item(
+        "Casco",
+        "Defensa +20"
+    )
+
+    const cerveza = new Item(
+        "Cerveza",
+        "Daño +10"
+    )
+
+    const whisky = new Item(
+        "Whisky",
+        "Daño +20"
+    )
+    const items = [armadura, casco, cerveza, whisky];
+    
+    const itemContainer = document.querySelector(".item-container");
+    for (var i = 0; i < 4; i++) {
+        console.log(items[i]);
+
         const card = document.createElement('div');
         card.classList.add('item-block');
 
-        const spriteContainer = document.createElement('div');
-        spriteContainer.classList.add('img-container');
-
-        const sprite = document.createElement('img');
-        sprite.src = item.sprites.default;
-
-        spriteContainer.appendChild(sprite);
-
-        const number = document.createElement('p');
-        number.textContent = `#${item.id.toString()}`;
-
         const name = document.createElement('p');
         name.classList.add('name');
-        name.textContent = item.name;
+        name.textContent = items[i];
 
-        card.appendChild(spriteContainer);
-        card.appendChild(number);
         card.appendChild(name);
 
         itemContainer.appendChild(card);
     }
+    
+
+
+    // function crearItem() {
+    //     const card = document.createElement('div');
+    //     card.classList.add('item-block');
+
+    //     // const spriteContainer = document.createElement('div');
+    //     // spriteContainer.classList.add('img-container');
+
+    //     // const sprite = document.createElement('img');
+    //     // sprite.src = item.sprites.default;
+
+    //     // spriteContainer.appendChild(sprite);
+
+    //     const name = document.createElement('p');
+    //     name.classList.add('name');
+    //     name.textContent = ;
+
+    //     // card.appendChild(spriteContainer);
+    //     card.appendChild(number);
+    //     card.appendChild(name);
+
+    //     itemContainer.appendChild(card);
+    // }
 </script>
