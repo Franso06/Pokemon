@@ -36,6 +36,8 @@
         margin-right: auto;
         margin-bottom: 40px;
         margin-top: 20px;
+        padding-top: 100px;
+
     }
 
     .item-block,
@@ -62,13 +64,6 @@
         font-size: 1.2rem;
     }
 
-    #spinner {
-        display: none;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-    }
-
     .pagination {
         width: 90%;
         margin-left: auto;
@@ -85,28 +80,6 @@
         transform-style: preserve-3d;
     }
 
-    .flip-card:hover .card-container {
-        transform: rotateY(180deg);
-    }
-
-    .item-block,
-    .item-block-back {
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-    }
-
-    .item-block-back {
-        transform: rotateY(180deg);
-        position: absolute;
-        top: 0%;
-    }
-
-    .stat-container {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        text-align: left;
-    }
 </style>
 
 <body>
@@ -143,46 +116,40 @@
         "Whisky",
         "Daño +20"
     )
+    var ArrayOfImages = ['https://art.pixilart.com/60abd73a766f51d.png', 'https://th.bing.com/th/id/R.0998e758c393569ee201a2118d4fc187?rik=eYWEYmVslC89%2bA&pid=ImgRaw&r=0',
+        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/antidote.png',
+        'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png'
+    ]; //your assumed array
+
     const items = [armadura, casco, cerveza, whisky];
-    
+
     const itemContainer = document.querySelector(".item-container");
     for (var i = 0; i < 4; i++) {
         console.log(items[i]);
 
-        const card = document.createElement('div');
+        const spriteContainer = document.createElement('div');
+        spriteContainer.classList.add('img-container');
+
+        const sprite = document.createElement('img');
+        sprite.height="50";
+        sprite.width="50";
+        sprite.src = ArrayOfImages[i];
+        spriteContainer.appendChild(sprite);
+
+        const card  = document.createElement('div');
         card.classList.add('item-block');
 
         const name = document.createElement('p');
         name.classList.add('name');
-        name.textContent = items[i];
+        name.textContent = JSON.stringify(items[i].nombre).replace(/['"]+/g, '');
 
+        const efecto = document.createElement('p');
+        efecto.classList.add('efecto');
+        efecto.textContent = JSON.stringify(items[i].efecto).replace(/['"]+/g, '');
+
+        card.appendChild(sprite)
         card.appendChild(name);
-
+        card.appendChild(efecto);
         itemContainer.appendChild(card);
     }
-    
-
-
-    // function crearItem() {
-    //     const card = document.createElement('div');
-    //     card.classList.add('item-block');
-
-    //     // const spriteContainer = document.createElement('div');
-    //     // spriteContainer.classList.add('img-container');
-
-    //     // const sprite = document.createElement('img');
-    //     // sprite.src = item.sprites.default;
-
-    //     // spriteContainer.appendChild(sprite);
-
-    //     const name = document.createElement('p');
-    //     name.classList.add('name');
-    //     name.textContent = ;
-
-    //     // card.appendChild(spriteContainer);
-    //     card.appendChild(number);
-    //     card.appendChild(name);
-
-    //     itemContainer.appendChild(card);
-    // }
 </script>
