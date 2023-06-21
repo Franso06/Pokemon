@@ -6,6 +6,7 @@
     <script>
         type = "test/javascript"
         src = "funciones.js"
+
     </script>
     <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -96,12 +97,12 @@
         }
 
         .btn-black {
-            background-color: #000 !important;
-            color: #fff;
+            background-color: rgb(255, 202, 0) !important;
+            color: rgb(0, 0, 0);
         }
 
         a {
-            color: black;
+            color:  #015ab9;;
         }
 
         h2,
@@ -124,13 +125,76 @@
             width: 20%;
             hi transform: translate(-50%, -50%);
         }
+        /*Estilo pokemon*/
+        .pokemon-input {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .pokemon-input input {
+            font-size: 18px;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid #fbb040;
+            outline: none;
+            background-color: transparent;
+            color: #fff;
+        }
+
+        .pokemon-input label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 18px;
+            padding: 14px;
+            color: #fbb040;
+            pointer-events: none;
+            transition: 0.2s ease all;
+        }
+
+        .pokemon-input input:focus+label,
+        .pokemon-input input:not(:placeholder-shown)+label {
+            transform: translateY(-25px);
+            font-size: 12px;
+        }
+
+        .pokemon-input span {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #fbb040;
+            transform: scaleX(0);
+            transition: 0.2s ease all;
+        }
+
+        .pokemon-input input:focus+span,
+        .pokemon-input input:not(:placeholder-shown)+span {
+            transform: scaleX(1);
+        }
+
+        .password-input .toggle-password {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+            color: #fbb040;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .password-input .toggle-password i {
+            pointer-events: none;
+        }
+
     </style>
 
     <script>
+        $(document).ready(function() {
 
-        $(document).ready(function(){
-            
-             $("#btn_registrarse").click(function() {
+            $("#btn_registrarse").click(function() {
                 event.preventDefault();
 
                 var nombre = $("#nombre");
@@ -141,16 +205,16 @@
                 if (nombre.val() == "") {
                     alert("Error en el nombre de usuario.");
                     nombre.focus();
-                }else if (correo.val() == "") {
+                } else if (correo.val() == "") {
                     alert("Error en el correo electrónico.");
                     correo.focus();
-                }else if (validarCorreo(correo.val()) == false) {
+                } else if (validarCorreo(correo.val()) == false) {
                     alert("Correo no válido.");
                     correo.focus();
-                }else if (contraseña.val() == "") {
+                } else if (contraseña.val() == "") {
                     alert("Error en la contraseña.");
                     contraseña.focus();
-                }else if (contraseña2.val() == "") {
+                } else if (contraseña2.val() == "") {
                     alert("No ha ingresado nuevamente su contraseña.");
                     contraseña2.focus();
                 } else if (contraseña.val() != contraseña2.val()) {
@@ -160,32 +224,25 @@
                     console.log(frm_usuario);
                 }
 
-                
-        });
+
+            });
 
 
 
-            
+
         });
 
 
 
         function validarCorreo(valor) {
-            if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(valor)) {
+            if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+                .test(valor)) {
                 return true;
             } else {
                 return false;
             }
         }
 
-
-
-
-
-
-
-
-       
     </script>
 
 
@@ -200,7 +257,7 @@
 
     <div class="sidenav">
         <div class="login-main-text">
-            <img class="logo_pokemon"src="{{ asset('imagenes/imagen_logo_pokemon.png') }}">
+            <img class="logo_pokemon" src="{{ asset('imagenes/imagen_logo_pokemon.png') }}">
 
 
             <div class="container">
@@ -215,46 +272,43 @@
         <div class="col-md-6 col-sm-12">
             <div class="login-form">
                 <div class="output_message" id="form-messages"></div>
-                <form id="frm_usuario">
-                    <div class="form-group">
-                        <label>Nombre usuario</label>
-                        <input id="nombre" name="nombre "type="text" class="form-control"
-                            placeholder="Nombre de usuario">
-
-                    </div>
-            </div>
-            <div class="form-group">
-                <label>Correo electrónico</label>
-                <input id="correo" name="correo" type="text" class="form-control"
-                    placeholder="Correo electrónico">
-                <div id="correo_help_block" class="form-text" style="">
-
+                    <form id="frm_usuario">
+                        <div class="form-group">
+                            <div class="pokemon-input">
+                                <input id="nombre" name="nombre" type="text" placeholder=" ">
+                                <label>Nombre Usuario</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="pokemon-input">
+                                <input id="correo" name="correo" type="email" placeholder=" ">
+                                <label>Correo electrónico</label>
+                            </div>
+                            <div id="correo_help_block" class="form-text" style=""></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="pokemon-input">
+                                <input id="contraseña" name="contraseña" type="text" placeholder=" ">
+                                <label>Contraseña</label>
+                            </div>
+                            <div id="contraseña_help_block" class="form-text" style=""></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="pokemon-input">
+                                <input  id="contraseña2" name="contraseña2" type="text" placeholder=" ">
+                                <label>Reingrese su contraseña</label>
+                            </div>
+                            <div id="contraseña2_help_block" class="form-text" style=""></div>
+                        </div>
+                        <button id="btn_registrarse" type="submit" class="btn btn-black">Registrarse</button>
+                        <div>
+                            <a href="http://pokemon.test/login">¿Ya está registrado?</a>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="form-group">
-                <label>Contraseña</label>
-                <input id="contraseña" name="contraseña" type="password" class="form-control" placeholder="Contraseña">
-                <div id="contraseña_help_block" class="form-text" style="">
-
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Reingrese su contraseña</label>
-                <input id="contraseña2" name="contraseña2" type="password" class="form-control"
-                    placeholder="Reingrese su contraseña">
-                <div id="contraseña2_help_block" class="form-text" style="">
-                </div>
-            </div>
-            <button id="btn_registrarse" type="submit" class="btn btn-black">Registrarse</button>
-            <div><a href="http://pokemon.test/login">¿Ya está registrado?</a></div>
-
-            </form>
         </div>
     </div>
-    </div>
-
-
-
 </body>
 
 </html>
