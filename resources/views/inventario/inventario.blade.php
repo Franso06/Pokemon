@@ -79,7 +79,6 @@
         transition: transform 0.8s;
         transform-style: preserve-3d;
     }
-
 </style>
 
 <body>
@@ -116,7 +115,8 @@
         "Whisky",
         "Daño +20"
     )
-    var ArrayOfImages = ['https://art.pixilart.com/60abd73a766f51d.png', 'https://th.bing.com/th/id/R.0998e758c393569ee201a2118d4fc187?rik=eYWEYmVslC89%2bA&pid=ImgRaw&r=0',
+    var ArrayOfImages = ['https://art.pixilart.com/60abd73a766f51d.png',
+        'https://th.bing.com/th/id/R.0998e758c393569ee201a2118d4fc187?rik=eYWEYmVslC89%2bA&pid=ImgRaw&r=0',
         'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/antidote.png',
         'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png'
     ]; //your assumed array
@@ -131,12 +131,12 @@
         spriteContainer.classList.add('img-container');
 
         const sprite = document.createElement('img');
-        sprite.height="50";
-        sprite.width="50";
+        sprite.height = "50";
+        sprite.width = "50";
         sprite.src = ArrayOfImages[i];
         spriteContainer.appendChild(sprite);
 
-        const card  = document.createElement('div');
+        const card = document.createElement('div');
         card.classList.add('item-block');
 
         const name = document.createElement('p');
@@ -147,9 +147,23 @@
         efecto.classList.add('efecto');
         efecto.textContent = JSON.stringify(items[i].efecto).replace(/['"]+/g, '');
 
-        card.appendChild(sprite)
+        const comprar = document.createElement('p');
+        comprar.classList.add('comprar');
+        comprar.setAttribute('id','comprar');
+        comprar.textContent = "Comprar";
+
+        card.appendChild(comprar);
+        card.appendChild(sprite);
         card.appendChild(name);
         card.appendChild(efecto);
         itemContainer.appendChild(card);
     }
+    
+    document.getElementsById('comprar').onclick = () => {
+        console.log('clicked')
+        document.getElementsById('comprar').textContent = "click me (clicked)"
+        // if you want to redirect ( remove the "//" in the next line ):
+        // window.location.href = "http://example.com"
+    }
+    
 </script>
