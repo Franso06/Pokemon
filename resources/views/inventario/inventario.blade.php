@@ -27,6 +27,10 @@
         color: white;
     }
 
+    button {
+        border-radius: 10px;
+    }
+
     .item-container {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -126,6 +130,7 @@
     const itemContainer = document.querySelector(".item-container");
     for (var i = 0; i < 4; i++) {
         console.log(items[i]);
+        
 
         const spriteContainer = document.createElement('div');
         spriteContainer.classList.add('img-container');
@@ -147,23 +152,18 @@
         efecto.classList.add('efecto');
         efecto.textContent = JSON.stringify(items[i].efecto).replace(/['"]+/g, '');
 
-        const comprar = document.createElement('p');
-        comprar.classList.add('comprar');
-        comprar.setAttribute('id','comprar');
+        const comprar = document.createElement('button');
+        comprar.classList.add('btn-light');
+        comprar.setAttribute('id', 'comprar');
+        comprar.addEventListener("click", (event) => {
+            console.log( `Compraste: ${event.detail}`);
+        });
         comprar.textContent = "Comprar";
-
-        card.appendChild(comprar);
+        
         card.appendChild(sprite);
         card.appendChild(name);
         card.appendChild(efecto);
+        card.appendChild(comprar);
         itemContainer.appendChild(card);
     }
-    
-    document.getElementsById('comprar').onclick = () => {
-        console.log('clicked')
-        document.getElementsById('comprar').textContent = "click me (clicked)"
-        // if you want to redirect ( remove the "//" in the next line ):
-        // window.location.href = "http://example.com"
-    }
-    
 </script>
