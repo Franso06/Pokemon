@@ -1,5 +1,5 @@
 <head>
-    <title>Inventario</title>
+    <title>Pokedex</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
