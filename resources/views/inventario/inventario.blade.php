@@ -27,6 +27,10 @@
         color: white;
     }
 
+    button {
+        border-radius: 10px;
+    }
+
     .item-container {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -79,7 +83,6 @@
         transition: transform 0.8s;
         transform-style: preserve-3d;
     }
-
 </style>
 
 <body>
@@ -116,7 +119,8 @@
         "Whisky",
         "Daño +20"
     )
-    var ArrayOfImages = ['https://art.pixilart.com/60abd73a766f51d.png', 'https://th.bing.com/th/id/R.0998e758c393569ee201a2118d4fc187?rik=eYWEYmVslC89%2bA&pid=ImgRaw&r=0',
+    var ArrayOfImages = ['https://art.pixilart.com/60abd73a766f51d.png',
+        'https://th.bing.com/th/id/R.0998e758c393569ee201a2118d4fc187?rik=eYWEYmVslC89%2bA&pid=ImgRaw&r=0',
         'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/antidote.png',
         'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png'
     ]; //your assumed array
@@ -126,17 +130,18 @@
     const itemContainer = document.querySelector(".item-container");
     for (var i = 0; i < 4; i++) {
         console.log(items[i]);
+        
 
         const spriteContainer = document.createElement('div');
         spriteContainer.classList.add('img-container');
 
         const sprite = document.createElement('img');
-        sprite.height="50";
-        sprite.width="50";
+        sprite.height = "50";
+        sprite.width = "50";
         sprite.src = ArrayOfImages[i];
         spriteContainer.appendChild(sprite);
 
-        const card  = document.createElement('div');
+        const card = document.createElement('div');
         card.classList.add('item-block');
 
         const name = document.createElement('p');
@@ -147,9 +152,18 @@
         efecto.classList.add('efecto');
         efecto.textContent = JSON.stringify(items[i].efecto).replace(/['"]+/g, '');
 
-        card.appendChild(sprite)
+        const comprar = document.createElement('button');
+        comprar.classList.add('btn-light');
+        comprar.setAttribute('id', 'comprar');
+        comprar.addEventListener("click", (event) => {
+            console.log( `Compraste: ${event.detail}`);
+        });
+        comprar.textContent = "Comprar";
+        
+        card.appendChild(sprite);
         card.appendChild(name);
         card.appendChild(efecto);
+        card.appendChild(comprar);
         itemContainer.appendChild(card);
     }
 </script>
