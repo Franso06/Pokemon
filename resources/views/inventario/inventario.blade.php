@@ -2,7 +2,7 @@
     <title>Inventario</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display:flex swap" rel="stylesheet">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
@@ -21,6 +21,7 @@
         text-align: center;
         font-family: Arial, Helvetica, sans-serif;
         font-family: "Oswald", sans-serif;
+        
     }
 
     h1 {
@@ -32,7 +33,7 @@
     }
 
     .item-container {
-        display: grid;
+        display:grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 30px;
         width: 80%;
@@ -41,7 +42,6 @@
         margin-bottom: 40px;
         margin-top: 20px;
         padding-top: 100px;
-
     }
 
     .item-block,
@@ -90,7 +90,7 @@
     <div class="item-container">
 
     </div>
-
+    
 </body>
 <script>
     class Item {
@@ -126,12 +126,12 @@
     ]; //your assumed array
 
     const items = [armadura, casco, cerveza, whisky];
-
+    
     const itemContainer = document.querySelector(".item-container");
+
     for (var i = 0; i < 4; i++) {
         console.log(items[i]);
         
-
         const spriteContainer = document.createElement('div');
         spriteContainer.classList.add('img-container');
 
@@ -141,24 +141,25 @@
         sprite.src = ArrayOfImages[i];
         spriteContainer.appendChild(sprite);
 
-        const card = document.createElement('div');
+        var card = document.createElement('div', []);
         card.classList.add('item-block');
 
+        const comprar = document.createElement('button');
+        comprar.classList.add('btn-light');
+        comprar.setAttribute('id', `${items[i].nombre}`);
+        comprar.addEventListener("click", (event) => {
+            console.log( `Compraste: ${comprar.id}`);
+        });
+        comprar.textContent = "Comprar";
+        
         const name = document.createElement('p');
         name.classList.add('name');
         name.textContent = JSON.stringify(items[i].nombre).replace(/['"]+/g, '');
-
+        
         const efecto = document.createElement('p');
         efecto.classList.add('efecto');
         efecto.textContent = JSON.stringify(items[i].efecto).replace(/['"]+/g, '');
 
-        const comprar = document.createElement('button');
-        comprar.classList.add('btn-light');
-        comprar.setAttribute('id', 'comprar');
-        comprar.addEventListener("click", (event) => {
-            console.log( `Compraste: ${event.detail}`);
-        });
-        comprar.textContent = "Comprar";
         
         card.appendChild(sprite);
         card.appendChild(name);
