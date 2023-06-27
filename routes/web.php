@@ -34,3 +34,6 @@ Route::get('/perfil', function () {
 Route::get('/pokedex', function () {
     return view('pokedex.pokedex');
 });
+Route::get('/juego', function () {
+    return view('juego.juego');
+});
