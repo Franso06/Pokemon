@@ -31,7 +31,14 @@
     button {
         border-radius: 10px;
     }
+    #volver_atras{
+        margin-right: 76%;
+        width: 60px;
 
+    }
+    .title{
+        padding-bottom: 60px;
+    }
     .item-container {
         display:grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -40,8 +47,8 @@
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 40px;
-        margin-top: 20px;
-        padding-top: 100px;
+        margin-top: auto;
+        padding-top: 10px;
     }
 
     .item-block,
@@ -87,6 +94,7 @@
 
 <body>
     <h1 class="title">Inventario</h1>
+    <button href="pokemon.test/pantalla_principal" class="button" id="volver_atras">Volver</button>
     <div class="item-container">
 
     </div>
