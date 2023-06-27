@@ -198,6 +198,9 @@
         <button id="boton1" class="boton">JUGAR</button>
         <button id="boton-historial" class="boton">HISTORIAL DE PREMIOS</button>
         <button id="boton2" class="boton">INFORMACIÓN DE JUGADOR</button>
+        <button id="boton3" class="boton">POKEDEX</button>
+        <button id="boton" class="boton">INVENTARIO</button>
+
     </div>
     <div id="reloj-container">
         <div id="reloj">
@@ -274,10 +277,16 @@
             }
 
             $("#boton1").click(function() {
-                window.location.href = "http://pokemon.test/pokedex";
+                window.location.href = "http://pokemon.test/juego";
             });
             $("#boton2").click(function() {
                 window.location.href = "http://pokemon.test/perfil";
+            });
+            $("#boton3").click(function() {
+                window.location.href = "http://pokemon.test/pokedex";
+            });
+            $("#boton").click(function() {
+                window.location.href = "http://pokemon.test/inventario";
             });
             $("#boton-historial").click(function() {
                 var historialHTML = "";
