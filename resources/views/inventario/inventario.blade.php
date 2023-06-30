@@ -21,7 +21,7 @@
         text-align: center;
         font-family: Arial, Helvetica, sans-serif;
         font-family: "Oswald", sans-serif;
-        
+
     }
 
     h1 {
@@ -31,16 +31,19 @@
     button {
         border-radius: 10px;
     }
-    #volver_atras{
+
+    #volver_atras {
         margin-right: 76%;
         width: 60px;
 
     }
-    .title{
+
+    .title {
         padding-bottom: 60px;
     }
+
     .item-container {
-        display:grid;
+        display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 30px;
         width: 80%;
@@ -94,13 +97,14 @@
 
 <body>
     <h1 class="title">Inventario</h1>
-    <button href="pokemon.test/pantalla_principal" class="button" id="volver_atras">Volver</button>
+    <button class="boton" id="volver_atras">Volver</button>
     <div class="item-container">
 
     </div>
-    
+
 </body>
 <script>
+    
     class Item {
 
         constructor(nombre, efecto) {
@@ -134,12 +138,12 @@
     ]; //your assumed array
 
     const items = [armadura, casco, cerveza, whisky];
-    
+
     const itemContainer = document.querySelector(".item-container");
 
     for (var i = 0; i < 4; i++) {
         console.log(items[i]);
-        
+
         const spriteContainer = document.createElement('div');
         spriteContainer.classList.add('img-container');
 
@@ -156,23 +160,25 @@
         comprar.classList.add('btn-light');
         comprar.setAttribute('id', `${items[i].nombre}`);
         comprar.addEventListener("click", (event) => {
-            console.log( `Compraste: ${comprar.id}`);
+            console.log(`Compraste: ${comprar.id}`);
         });
         comprar.textContent = "Comprar";
-        
+
         const name = document.createElement('p');
         name.classList.add('name');
         name.textContent = JSON.stringify(items[i].nombre).replace(/['"]+/g, '');
-        
+
         const efecto = document.createElement('p');
         efecto.classList.add('efecto');
         efecto.textContent = JSON.stringify(items[i].efecto).replace(/['"]+/g, '');
 
-        
+
         card.appendChild(sprite);
         card.appendChild(name);
         card.appendChild(efecto);
         card.appendChild(comprar);
         itemContainer.appendChild(card);
     }
+
+    
 </script>
