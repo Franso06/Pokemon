@@ -26,7 +26,9 @@
     h1 {
         color: white;
     }
-
+    button{
+        border-radius: 10px;
+    }
     .pokemon-container {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -36,6 +38,11 @@
         margin-right: auto;
         margin-bottom: 40px;
         margin-top: 20px;
+    }
+    #volver_atras {
+        margin-right: 76%;
+        width: 60px;
+
     }
 
     .pokemon-block,
@@ -111,6 +118,8 @@
 
 <body>
     <h1 class="title">Pokedex</h1>
+    <a href="/pantalla_principal"><button class="boton" id="volver_atras">Volver</button></a>
+
     <div class="pokemon-container">
 
     </div>
