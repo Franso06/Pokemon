@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/','ItemsController@index');  
+
 Route::get('/login/registrarse', function () {
     return view('login.registrarse');
 });

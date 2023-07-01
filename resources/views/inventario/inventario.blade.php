@@ -96,38 +96,52 @@
 </style>
 
 <body>
+
     <h1 class="title">Inventario</h1>
-    <button class="boton" id="volver_atras">Volver</button>
+    <a href="/pantalla_principal"><button class="boton" id="volver_atras">Volver</button></a>
     <div class="item-container">
 
     </div>
-
+    <div>
+        {{-- @foreach ($items as $item)
+            <tr>
+                <td scope="row">{{ $item->id }}</td>
+                <td>{{ $item->Nombre }}</td>
+                <td>{{ $item->Efecto }}</td>
+            </tr>
+            
+        @endforeach --}}
+    </div>
 </body>
 <script>
-    
     class Item {
 
-        constructor(nombre, efecto) {
+        constructor(id, nombre, efecto) {
+            this.id = id;
             this.nombre = nombre;
             this.efecto = efecto;
         }
     }
     const armadura = new Item(
+        "1",
         "Armadura",
         "Defensa +10"
     )
 
     const casco = new Item(
+        "2",
         "Casco",
         "Defensa +20"
     )
 
     const cerveza = new Item(
+        "3",
         "Cerveza",
         "Daño +10"
     )
 
     const whisky = new Item(
+        "4",
         "Whisky",
         "Daño +20"
     )
@@ -179,6 +193,4 @@
         card.appendChild(comprar);
         itemContainer.appendChild(card);
     }
-
-    
 </script>
