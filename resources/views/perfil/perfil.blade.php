@@ -129,11 +129,6 @@
             pointer-events: none;
             transition: 0.2s ease all;
         }
-        .pokemon-input input:focus+label,
-        .pokemon-input input:not(:placeholder-shown)+label {
-            transform: translateY(-25px);
-            font-size: 12px;
-        }
         .pokemon-input span {
             position: absolute;
             bottom: 0;
@@ -164,28 +159,34 @@
         <div class="col-md-6 col-sm-12">
             <div class="login-form">
                 <div class="output_message" id="form-messages"></div>
-                    <form action="{{ route('registrarse.store')}}" method="POST" id="frm_usuario">
+                    <form id="frm_usuario">
+                    <div class="container-perfil">
+                        <h2>Gestion de perfil</h2>
+                        <div class="fotoPerfil">
+                          <img id="imagenPerfil" src="ruta-a-la-imagen-actual.jpg" style="width: 200px; height: 200px;"alt="Foto de perfil">
+                          <input type="file" id="nuevaFotoPerfil" accept="image/*">
+                       </div>
                         <div class="form-group">
+                            <label>Nombre</label>
                             <div class="pokemon-input">
                                 <input id="nombre" name="nombre" value="" type="text" placeholder=" ">
-                                <label>Nombre</label>
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>Correo electrónico</label>
                             <div class="pokemon-input">
                                 <input id="correo" name="correo" value="" type="email" placeholder=" ">
-                                <label>Correo electrónico</label>
                             </div>
                             <div id="correo_help_block" class="form-text" style=""></div>
                         </div>
                         <div class="form-group">
                             <div class="pokemon-input">
-                                <input id="contraseña" name="contraseña" type="text" placeholder=" ">
+                                <input id="contraseña" name="contraseña" type="password" placeholder=" ">
                                 <label>Contraseña</label>
                             </div>
                             <div id="contraseña_help_block" class="form-text" style=""></div>
                         </div>
-                          <button id="btn_guardar" type="submit" value="Enviar" class="btn btn-black">Guardar</button>
+                          <button id="btn_guardar" type="submit" value="Guardar" class="btn btn-black" onclick="cambiarFotoPerfil()">Guardar</button>
                           <button id="btn_menu" type="submit" value="Enviar" class="btn btn-black">Volver al menu</button>
                     </form>
                 </div>
@@ -193,4 +194,19 @@
         </div>
     </div>
 </body>
+<script>
+//formula para cambiar la foto de perfil 
+function cambiarFotoPerfil() {
+    var fileInput = document.getElementById('nuevaFotoPerfil');
+    var file = fileInput.files[0];
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      var imageElement = document.getElementById('imagenPerfil');
+      imageElement.src = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
+    }
+</script>
 </html>
