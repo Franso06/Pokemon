@@ -180,9 +180,9 @@
                             <div id="correo_help_block" class="form-text" style=""></div>
                         </div>
                         <div class="form-group">
+                            <label>Contraseña</label>
                             <div class="pokemon-input">
                                 <input id="contraseña" name="contraseña" type="password" placeholder=" ">
-                                <label>Contraseña</label>
                             </div>
                             <div id="contraseña_help_block" class="form-text" style=""></div>
                         </div>
