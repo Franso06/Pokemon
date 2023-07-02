@@ -160,34 +160,34 @@
             <div class="login-form">
                 <div class="output_message" id="form-messages"></div>
                     <form id="frm_usuario">
-                    <div class="container-perfil">
-                        <h2>Gestion de perfil</h2>
-                        <div class="fotoPerfil">
-                          <img id="imagenPerfil" src="ruta-a-la-imagen-actual.jpg" style="width: 200px; height: 200px;"alt="Foto de perfil">
-                          <input type="file" id="nuevaFotoPerfil" accept="image/*">
-                       </div>
-                        <div class="form-group">
-                            <label>Nombre</label>
-                            <div class="pokemon-input">
-                                <input id="nombre" name="nombre" value="" type="text" placeholder=" ">
-                            </div>
+                        <div class="container-perfil">
+                            <h2>Gestion de perfil</h2>
+                            <div class="fotoPerfil">
+                            <img id="imagenPerfil" src="ruta-a-la-imagen-actual.jpg" style="width: 200px; height: 200px;"alt="Foto de perfil">
+                            <input type="file" id="nuevaFotoPerfil" accept="image/*">
                         </div>
-                        <div class="form-group">
-                            <label>Correo electrónico</label>
-                            <div class="pokemon-input">
-                                <input id="correo" name="correo" value="" type="email" placeholder=" ">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <div class="pokemon-input">
+                                    <input id="nombre" name="nombre" value="" type="text" placeholder=" ">
+                                </div>
                             </div>
-                            <div id="correo_help_block" class="form-text" style=""></div>
-                        </div>
-                        <div class="form-group">
-                            <label>Contraseña</label>
-                            <div class="pokemon-input">
-                                <input id="contraseña" name="contraseña" type="password" placeholder=" ">
+                            <div class="form-group">
+                                <label col>Correo electrónico</label>
+                                <div class="pokemon-input">
+                                    <input id="correo" name="correo" value="" type="email" placeholder=" ">
+                                </div>
+                                <div id="correo_help_block" class="form-text" style=""></div>
                             </div>
-                            <div id="contraseña_help_block" class="form-text" style=""></div>
-                        </div>
-                          <button id="btn_guardar" type="submit" value="Guardar" class="btn btn-black" onclick="cambiarFotoPerfil()">Guardar</button>
-                          <button id="btn_menu" type="submit" value="Enviar" class="btn btn-black">Volver al menu</button>
+                            <div class="form-group">
+                                <label>Contraseña</label>
+                                <div class="pokemon-input">
+                                    <input id="contraseña" name="contraseña" type="password" placeholder=" ">
+                                </div>
+                                <div id="contraseña_help_block" class="form-text" style=""></div>
+                            </div>
+                            <button id="btn_guardar" type="submit" value="Guardar" class="btn btn-black" onclick="cambiarFotoPerfil()">Guardar</button>
+                            <button id="btn_menu" type="submit" value="Enviar" class="btn btn-black">Volver al menu</button>
                     </form>
                 </div>
             </div>
