@@ -192,7 +192,8 @@
     </style>
 
     <script>
-        $(document).ready(function() {
+
+        /*$(document).ready(function() {
 
             $("#btn_registrarse").click(function() {
                 event.preventDefault();
@@ -221,7 +222,7 @@
                     alert("Las contraseñas deben ser iguales");
                     contraseña2.focus();
                 } else {
-                    console.log(frm_usuario);
+                    console.log(frm_usuario)
                 }
 
 
@@ -243,7 +244,8 @@
             }
         }
 
-    </script>
+*/
+</script>
 
 
 
@@ -272,17 +274,24 @@
         <div class="col-md-6 col-sm-12">
             <div class="login-form">
                 <div class="output_message" id="form-messages"></div>
-                    <form id="frm_usuario">
+                    <form action="{{ route('registrarse.store')}}" method="POST" id="frm_usuario">
+                    @csrf
                         <div class="form-group">
                             <div class="pokemon-input">
-                                <input id="nombre" name="nombre" type="text" placeholder=" ">
+                                <input id="nombre" name="nombre" value="{{ old('nombre') }}" type="text" placeholder=" ">
+                                @error('name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                                 <label>Nombre Usuario</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="pokemon-input">
-                                <input id="correo" name="correo" type="email" placeholder=" ">
+                                <input id="correo" name="correo" value="{{ old('correo') }}" type="email" placeholder=" ">
                                 <label>Correo electrónico</label>
+                                @error('name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div id="correo_help_block" class="form-text" style=""></div>
                         </div>
@@ -300,7 +309,7 @@
                             </div>
                             <div id="contraseña2_help_block" class="form-text" style=""></div>
                         </div>
-                        <button id="btn_registrarse" type="submit" class="btn btn-black">Registrarse</button>
+                        <button id="btn_registrarse" type="submit" value="Enviar" class="btn btn-black">Registrarse</button>
                         <div>
                             <a href="http://pokemon.test/login">¿Ya está registrado?</a>
                         </div>

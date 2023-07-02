@@ -217,7 +217,7 @@
                         </div>
                     </div>
                     <button type="submit" id="btn_ingresar" class="btn btn-black">Ingresar</button>
-                    <a class="btn btn-secondary" href="/login/registrarse">Registrarse</a>
+                    <a class="btn btn-secondary" href="{{ route('registrarse.create') }}">Registrarse</a>
                 </form>
             </div>
         </div>
