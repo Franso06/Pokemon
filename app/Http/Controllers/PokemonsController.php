@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Items;
+use App\Models\Pokemons;
 
-class ItemsController extends Controller
+class PokemonsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Items::orderBy('created_at', 'asc')->get();  //returns values in ascending order
+        return Pokemons::orderBy('created_at', 'asc')->get();  //returns values in ascending order
 
     }
 
@@ -21,7 +21,7 @@ class ItemsController extends Controller
      */
     public function create($id)
     {
-        return Items::findorFail($id); //searches for the object in the database using its id and returns it.
+        return Pokemons::findorFail($id); //searches for the object in the database using its id and returns it.
 
     }
 
@@ -35,11 +35,11 @@ class ItemsController extends Controller
             'efecto' => 'required',
         ]);
   
-        $Items = new Items;
-        $Items->nombre = $request->input('nombre'); //retrieving user inputs
-        $Items->efecto = $request->input('efecto');  //retrieving user inputs
-        $Items->save(); //storing values as an object
-        return $Items; //returns the stored value if the operation was successful.
+        $Pokemons = new Pokemons;
+        $Pokemons->nombre = $request->input('nombre'); //retrieving user inputs
+        $Pokemons->efecto = $request->input('efecto');  //retrieving user inputs
+        $Pokemons->save(); //storing values as an object
+        return $Pokemons; //returns the stored value if the operation was successful.
     }
 
     /**
@@ -47,7 +47,7 @@ class ItemsController extends Controller
      */
     public function show(string $id)
     {
-        return Items::findorFail($id); //searches for the object in the database using its id and returns it.
+        return Pokemons::findorFail($id); //searches for the object in the database using its id and returns it.
 
     }
 
@@ -69,19 +69,19 @@ class ItemsController extends Controller
             'efecto' => 'required',
         ]);
   
-        $Items = Items::findorFail($id); // uses the id to search values that need to be updated.
-        $Items->nombre = $request->input('nombre'); //retrieves user input
-        $Items->efecto = $request->input('efecto');////retrieves user input
-        $Items->save();//saves the values in the database. The existing data is overwritten.
-        return $Items;
+        $Pokemons = Pokemons::findorFail($id); // uses the id to search values that need to be updated.
+        $Pokemons->nombre = $request->input('nombre'); //retrieves user input
+        $Pokemons->efecto = $request->input('efecto');////retrieves user input
+        $Pokemons->save();//saves the values in the database. The existing data is overwritten.
+        return $Pokemons;
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy($id){ //receives an object's id
-        $Items = Items::findorFail($id); //searching for object in database using ID
-        if($Items->delete()){ //deletes the object
+        $Pokemons = Pokemons::findorFail($id); //searching for object in database using ID
+        if($Pokemons->delete()){ //deletes the object
             return 'deleted successfully'; //shows a message when the delete operation was successful.
         }
     }
