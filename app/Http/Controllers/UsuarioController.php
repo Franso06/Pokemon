@@ -11,9 +11,10 @@ class UsuarioController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function login()
+    public function index()
     {
-        return view('login.login');
+        return Usuario::orderBy('created_at', 'asc')->get();  //returns values in ascending order
+        //  return view('login.login');
     }
 
     /**
@@ -32,6 +33,12 @@ class UsuarioController extends Controller
         $validator = Validator::make($request->all(),[
             'nombre'=>'required|unique:usuarios',
             'correo'=>'required|unique:usuarios',
+            'contraseña'=>'required',
+            'min:8',// Mínimo 8 caracteres
+            'confirmed',// Debe coincidir con el campo de confirmación de contraseña
+
+            'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/',
+            // Debe contener al menos una letra minúscula, una letra mayúscula, un número y un carácter especial
 
         ]);
 

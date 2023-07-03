@@ -19,12 +19,17 @@ Route::get('/', function () {
 });
 
 
-Route::get('registrarse/create',[UsuarioController::class,'create'])->name('registrarse.create');
-Route::post('registrarse',[UsuarioController::class,'store'])->name('registrarse.store');
-Route::get('login', [UsuarioController::class,'login'])->name('login.index');
+//Route::get('registrarse/create',[UsuarioController::class,'create'])->name('registrarse.create');
+//Route::post('registrarse',[UsuarioController::class,'store'])->name('registrarse.store');
+//Route::get('login', [UsuarioController::class,'login'])->name('login.index');
 
+Route::get('/registrarse', function () {
+    return view('login.registrarse');
+});
 
-
+Route::get('/login', function () {
+    return view('login.login');
+});
 
 Route::get('/inventario', function () {
     return view('inventario.inventario');
