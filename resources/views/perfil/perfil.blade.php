@@ -37,6 +37,8 @@
             padding-top: 20px;
         }
         .main {
+            position: relative;
+            top: -200px;
             padding: 0px 10px;
             padding-right: 200px;
         }
@@ -161,33 +163,38 @@
                 <div class="output_message" id="form-messages"></div>
                     <form id="frm_usuario">
                         <div class="container-perfil">
-                            <h2>Gestion de perfil</h2>
+                            <h2 style="color: rgb(255, 202, 0)">Gestion de perfil</h2>
                             <div class="fotoPerfil">
-                            <img id="imagenPerfil" src="ruta-a-la-imagen-actual.jpg" style="width: 200px; height: 200px;"alt="Foto de perfil">
-                            <input type="file" id="nuevaFotoPerfil" accept="image/*">
+                                <img id="imagenPerfil" src="ruta-a-la-imagen-actual.jpg" style="width: 200px; height: 200px;"alt="Foto de perfil">
+                                <input type="file" id="nuevaFotoPerfil" accept="image/*">
+                                <button id="btn_guardar" class="btn btn-black" type="button" onclick="cambiarFotoPerfil()">Guardar</button>
+                            </div>
                         </div>
                             <div class="form-group">
-                                <label>Nombre</label>
+                                <label for="formGroupExampleInput" class="form-label">Nombre</label>
                                 <div class="pokemon-input">
-                                    <input id="nombre" name="nombre" value="" type="text" placeholder=" ">
+                                    <input type="text" id="nombre" name="nombre" readonly>
+                                    <button id="btn_guardar" class="btn btn-black" type="button" onclick="habilitarEdicion('nombre')">Editar</button><br>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label col>Correo electrónico</label>
+                                <label for="formGroupExampleInput" class="form-label">Correo</label>
                                 <div class="pokemon-input">
-                                    <input id="correo" name="correo" value="" type="email" placeholder=" ">
+                                    <input type="correo" id="correo" name="correo" readonly>
+                                    <button id="btn_guardar" class="btn btn-black" type="button" onclick="habilitarEdicion('correo')">Editar</button><br>
                                 </div>
                                 <div id="correo_help_block" class="form-text" style=""></div>
                             </div>
                             <div class="form-group">
-                                <label>Contraseña</label>
+                                <label for="formGroupExampleInput" class="form-label">Contraseña</label>
                                 <div class="pokemon-input">
-                                    <input id="contraseña" name="contraseña" type="password" placeholder=" ">
+                                    <input type="password" id="contrasena" name="contrasena" readonly>
+                                    <button id="btn_guardar" class="btn btn-black" type="button" onclick="habilitarEdicion('contrasena')">Editar</button><br>
                                 </div>
                                 <div id="contraseña_help_block" class="form-text" style=""></div>
                             </div>
-                            <button id="btn_guardar" type="submit" value="Guardar" class="btn btn-black" onclick="cambiarFotoPerfil()">Guardar</button>
-                            <button id="btn_menu" type="submit" value="Enviar" class="btn btn-black">Volver al menu</button>
+
+                                <a href="/pantalla_principal"><button id="btn_menu" type="submit" value="Enviar" class="btn btn-black">Volver al menu</button></a>
                     </form>
                 </div>
             </div>
@@ -207,6 +214,24 @@ function cambiarFotoPerfil() {
     };
 
     reader.readAsDataURL(file);
+}
+function habilitarEdicion(campo) {
+    var input = document.getElementById(campo);
+    var button = input.nextElementSibling;
+
+    if (input.readOnly) {
+        input.readOnly = false;
+        button.textContent = 'Guardar';
+        button.addEventListener('click', function() {
+          guardarCambios(campo);
+        });
+    } else {
+        input.readOnly = true;
+        button.textContent = 'Editar';
+        button.removeEventListener('click', function() {
+          guardarCambios(campo);
+        });
     }
+}
 </script>
 </html>
