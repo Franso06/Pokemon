@@ -59,18 +59,8 @@
             .main {
                 margin-left: 40%;
             }
-            .sidenav {
-                width: 40%;
-                position: fixed;
-                z-index: 1;
-                top: 0;
-                left: 0;
-            }
             .login-form {
                 margin-top: 80%;
-            }
-            .register-form {
-                margin-top: 20%;
             }
         }
         .login-main-text {
@@ -93,24 +83,6 @@
             color: rgb(193, 32, 38);
             font-size: 28px;
         }
-        .logo_pokemon {
-            width: 60%;
-            /* Reduce el ancho a la mitad */
-            height: auto;
-            /* Mantiene la proporción original de la imagen */
-        }
-        .custom-image {
-            position: absolute;
-            top: 67%;
-            left: 60%;
-            width: 20%;
-            hi transform: translate(-50%, -50%);
-        }
-        /*Estilo pokemon*/
-        .pokemon-input {
-            position: relative;
-            margin-bottom: 20px;
-        }
         .pokemon-input input {
             font-size: 18px;
             padding: 10px;
@@ -130,20 +102,6 @@
             color: #fbb040;
             pointer-events: none;
             transition: 0.2s ease all;
-        }
-        .pokemon-input span {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #fbb040;
-            transform: scaleX(0);
-            transition: 0.2s ease all;
-        }
-        .pokemon-input input:focus+span,
-        .pokemon-input input:not(:placeholder-shown)+span {
-            transform: scaleX(1);
         }
         .password-input .toggle-password {
             position: absolute;
