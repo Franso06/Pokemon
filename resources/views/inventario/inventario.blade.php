@@ -102,8 +102,21 @@
     <div class="item-container">
 
     </div>
+    {{-- <table class="table table-striped table-sm" id="tbl-data">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col"> </th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table> --}}
     <div>
-        {{-- @foreach ($items as $item)
+       
+        {{-- @foreach ($Items as $item)
             <tr>
                 <td scope="row">{{ $item->id }}</td>
                 <td>{{ $item->Nombre }}</td>
@@ -113,6 +126,23 @@
         @endforeach --}}
     </div>
 </body>
+
+<script>
+    let url = 'http://pokemon.test/api/items'
+    fetch(url)
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
+    const mostrarData = (data) => {
+        console.log(data)
+        let body= ''
+        for(let i =0; i<data.lenght; i++)
+        {
+            body += `<tr><td>${data[i].id}</td></tr>`
+        }
+    }
+</script>
+
 <script>
     class Item {
 
@@ -157,7 +187,6 @@
 
     for (var i = 0; i < 4; i++) {
         console.log(items[i]);
-
         const spriteContainer = document.createElement('div');
         spriteContainer.classList.add('img-container');
 
