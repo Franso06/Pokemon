@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 
-class Items extends Model
+class Usuarios extends Model
 {
-    protected $table= 'Items';
+    protected $table= 'usuarios';
 
     protected $fillable=[
-        'id','Nombre','Efecto'
+        'id','nombre','correo','contrasena','created_at','updated_at','saldo'
     ];
-
+    
     public function userItemsPokemons()
     {
-    return $this->hasMany(UserItemsPokemon::class, 'item_id');
+    return $this->hasMany(UserItemsPokemon::class, 'user_id');
     }
 }
