@@ -43,3 +43,9 @@ Route::get('/perfil', function () {
 Route::get('/pokedex', function () {
     return view('pokedex.pokedex');
 });
+// Route::get('datos', [ItemsController::class,'index'])->name('datos.index');
+// =======
+// Route::get('/juego', function () {
+//     return view('juego.juego');
+// });
+
