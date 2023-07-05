@@ -307,7 +307,7 @@
                         <div class="form-group">
                             <div class="pokemon-input">
                                 <input id="contrasena" name="contrasena" type="text" placeholder=" ">
-                                <label>contrasena</label>
+                                <label>Contraseña</label>
                             </div>
                             <div id="contrasena_help_block" class="form-text" style=""></div>
                         </div>

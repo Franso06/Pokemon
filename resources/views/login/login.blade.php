@@ -4,7 +4,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 
 
 
@@ -213,14 +213,14 @@
                             <div class="input-group">
                                 <div class="pokemon-input contrasena">
                                     <input type="password" placeholder=" " name="contrasena" id="contrasena">
-                                    <label>contraseña</label>
+                                    <label>Contraseña</label>
                                     <span class="toggle-password" onclick="togglePasswordVisibility()"><i
                                             class="fas fa-eye"></i></span>
                                 </div>
                             </div>
                         </div>
                         <button type="submit" id="btn_ingresar" name="btn_ingresar" class="btn btn-black">Ingresar</button>
-                        <a class="btn btn-secondary" href="http://pokemon.test/registrarse">Registrarse</a>
+                        <a class="btn btn-secondary" href="http://pokemon.test/login/registrarse">Registrarse</a>
                     </form>
                 </div>
             </div>
@@ -247,12 +247,11 @@
                             for (var i = 0; i < json.length; i++) {
                                 if (nombre.toLowerCase() == json[i].nombre.toLowerCase()) {
                                     if (contrasena == json[i].contrasena) {
-                                        window.location.href = "http://pokemon.test/registrarse";
+                                        window.location.href = "http://pokemon.test/pantalla_principal";
                                     } else {
                                         intentos ++;
                                         if (intentos >= maxIntentos) {
-                                            // Se han superado los intentos máximos, redirigir a otra página
-                                            window.location.href = "http://google.com/";
+                                            alert("Contraseña incorrecta no se pueden hacer más intentos");
                                         } else {
                                             alert("Contraseña incorrecta. Intento " + intentos + " de " + maxIntentos);
                                         }
