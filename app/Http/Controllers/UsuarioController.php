@@ -22,6 +22,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
+        //return Usuario::findorFail();
         return view('login.registrarse');
     }
 
@@ -33,12 +34,6 @@ class UsuarioController extends Controller
         $validator = Validator::make($request->all(),[
             'nombre'=>'required|unique:usuarios',
             'correo'=>'required|unique:usuarios',
-            'contraseña'=>'required',
-            'min:8',// Mínimo 8 caracteres
-            'confirmed',// Debe coincidir con el campo de confirmación de contraseña
-
-            'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/',
-            // Debe contener al menos una letra minúscula, una letra mayúscula, un número y un carácter especial
 
         ]);
 
@@ -48,9 +43,9 @@ class UsuarioController extends Controller
 
         $usuario = new Usuario();
 
-        $usuario->Nombre = $request->nombre;
-        $usuario->Correo = $request->correo;
-        $usuario->Contraseña = $request->contraseña;
+        $usuario->nombre = $request->nombre;
+        $usuario->correo = $request->correo;
+        $usuario->contrasena = $request->contrasena;
 
         $usuario->save();
         return redirect()->route('login.index');
