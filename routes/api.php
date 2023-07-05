@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\PokemonsController;
+use App\Http\Controllers\UsuarioController;
 
 
 
@@ -26,4 +27,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::resource('tasks', TaskController::class);
 Route::resource('items', ItemsController::class);
 Route::resource('pokemons', PokemonsController::class);
+Route::resource('Usuario', UsuarioController::class);
 
