@@ -6,7 +6,7 @@
     <style>
         body {
             background-image: url("https://cdn.discordapp.com/attachments/981412672333574144/1125955527910883448/wallpaperbetter.jpg");
-            
+
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -70,11 +70,11 @@
             margin-top: 20px;
             padding-right: 38pc;
             margin-right: 300px;
-            
-            
+
+
         }
-        
-      
+
+
 
         .boton {
             padding: 10px 20px;
@@ -232,7 +232,7 @@
         }
         .boton:hover {
             transform: scale(1.2);
-            
+
         }
         h1 {
             font-family: 'Press Start 2P', cursive;
@@ -259,7 +259,7 @@
         <button id="boton3" class="boton">Pokedex</button>
         <button id="boton-historial" class="boton">HISTORIAL DE PREMIOS</button>
         <button id="boton2" class="boton">INFORMACIÓN DE JUGADOR</button>
-        
+
     </div>
     <div id="reloj-container">
         <div id="reloj">
@@ -309,13 +309,13 @@
                     }
                 }, 1000);
 
-             
+
             }
 
             function girarReloj() {
                 if (girarPermitido) {
                     girarPermitido = false;
-                    tiempoRestante =  ;
+                    tiempoRestante =  60;
 
                     var premioGanado = premios[Math.floor(Math.random() * premios.length)];
                     historialPremios.push(premioGanado); // Agregar premio al historial
@@ -343,7 +343,6 @@
                         iniciarTemporizador();
                     }, 2000);
                 }
-              
 
             }
 
@@ -378,7 +377,7 @@
                 $("#historial-modal").removeClass("show-modal");
             });
 
-        
+
         });
 
         // JavaScript para el cálculo del tiempo conectado
