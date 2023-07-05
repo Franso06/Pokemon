@@ -13,4 +13,8 @@ class Pokemons extends Model
     protected $fillable=[
         'id','nombre','vida','daño','armadura'
     ];
+    public function userItemsPokemons()
+    {
+    return $this->hasMany(UserItemsPokemon::class, 'pokemon_id');
+    }
 }

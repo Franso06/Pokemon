@@ -22,8 +22,8 @@ use App\Http\Controllers\PokemonsController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::resource('tasks', TaskController::class);
 Route::resource('items', ItemsController::class);
 Route::resource('pokemons', PokemonsController::class);
 
-// Route::get('/', [ItemsController::class, 'index']);

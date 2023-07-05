@@ -10,6 +10,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <style>
     body {
@@ -32,6 +34,17 @@
         border-radius: 10px;
     }
 
+    #coin-counter {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        color: black;
+        background-color: gold;
+        border-radius: 10px;
+    }
+
     #volver_atras {
         margin-right: 76%;
         width: 60px;
@@ -43,7 +56,7 @@
     }
 
     .item-container {
-        display: grid;
+        display: block;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 30px;
         width: 80%;
@@ -99,6 +112,8 @@
 
     <h1 class="title">Inventario</h1>
     <a href="/pantalla_principal"><button class="boton" id="volver_atras">Volver</button></a>
+    <div id="coin-counter">Monedas: <span id="coin-count">0</span></div>
+
     <div class="item-container">
 
     </div>
@@ -115,7 +130,7 @@
         </tbody>
     </table> --}}
     <div>
-       
+
         {{-- @foreach ($Items as $item)
             <tr>
                 <td scope="row">{{ $item->id }}</td>
@@ -124,6 +139,7 @@
             </tr>
             
         @endforeach --}}
+        
     </div>
 </body>
 
@@ -135,9 +151,8 @@
         .catch(error => console.log(error))
     const mostrarData = (data) => {
         console.log(data)
-        let body= ''
-        for(let i =0; i<data.lenght; i++)
-        {
+        let body = ''
+        for (let i = 0; i < data.lenght; i++) {
             body += `<tr><td>${data[i].id}</td></tr>`
         }
     }
@@ -180,8 +195,12 @@
         'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/antidote.png',
         'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png'
     ]; //your assumed array
+    var monedas = 1000;
+    $("#coin-count").text(monedas);
+
 
     const items = [armadura, casco, cerveza, whisky];
+    // Actualizar el saldo en la esquina
 
     const itemContainer = document.querySelector(".item-container");
 
@@ -204,6 +223,15 @@
         comprar.setAttribute('id', `${items[i].nombre}`);
         comprar.addEventListener("click", (event) => {
             console.log(`Compraste: ${comprar.id}`);
+
+
+
+            $("#coin-count").text(monedas);
+            if (monedas <= 0) {
+                alert("No se puede seguir comprando");
+            } else {
+                monedas = monedas - 200;
+            }
         });
         comprar.textContent = "Comprar";
 

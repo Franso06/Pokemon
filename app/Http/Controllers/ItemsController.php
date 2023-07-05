@@ -15,6 +15,9 @@ class ItemsController extends Controller
         return Items::orderBy('created_at', 'asc')->get();  //returns values in ascending order
 
     }
+    public function mensaje(){
+        return alert("mensaje")
+    }
 
     /**
      * Show the form for creating a new resource.
