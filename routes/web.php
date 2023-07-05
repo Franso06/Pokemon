@@ -14,16 +14,18 @@ use App\Http\Controllers\UsuarioController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 
 //Route::get('registrarse/create',[UsuarioController::class,'create'])->name('registrarse.create');
 //Route::post('registrarse',[UsuarioController::class,'store'])->name('registrarse.store');
 //Route::get('login', [UsuarioController::class,'login'])->name('login.index');
 
-Route::get('/registrarse', function () {
+//Route::get('/registrarse', function () {
+//=======
+// Route::get('/','ItemsController@index');  
+
+Route::get('/login/registrarse', function () {
     return view('login.registrarse');
 });
 
@@ -43,3 +45,9 @@ Route::get('/perfil', function () {
 Route::get('/pokedex', function () {
     return view('pokedex.pokedex');
 });
+// Route::get('datos', [ItemsController::class,'index'])->name('datos.index');
+// =======
+// Route::get('/juego', function () {
+//     return view('juego.juego');
+// });
+
