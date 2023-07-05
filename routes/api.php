@@ -9,6 +9,7 @@ use App\Http\Controllers\UsuarioController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes

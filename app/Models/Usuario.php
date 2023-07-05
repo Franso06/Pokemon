@@ -3,11 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Http\Request;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Usuario extends Model
 {
+
+
     protected $table= 'usuarios';
 
     protected $fillable=[
@@ -18,4 +22,5 @@ class Usuario extends Model
     {
     return $this->hasMany(UserItemsPokemon::class, 'user_id');
     }
+
 }
