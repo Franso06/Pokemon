@@ -5,7 +5,8 @@
     <title>Pantalla principal</title>
     <style>
         body {
-            background-image: url("https://wallpapers.com/images/high/cute-pokemon-pikachu-ash-hug-cmwxktzil294lzxd.webp");
+            background-image: url("https://cdn.discordapp.com/attachments/981412672333574144/1125955527910883448/wallpaperbetter.jpg");
+            
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -32,6 +33,7 @@
             overflow: hidden;
             cursor: pointer;
             margin-bottom: 20px;
+            margin-right: 300px;
         }
         #reloj img {
             width: 100%;
@@ -60,14 +62,19 @@
             display: none;
         }
 
-        #botones-container {
+        #botones-container  {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             margin-top: 20px;
             padding-right: 38pc;
+            margin-right: 300px;
+            
+            
         }
+        
+      
 
         .boton {
             padding: 10px 20px;
@@ -79,6 +86,30 @@
             border-radius: 4px;
             margin-bottom: 10px;
             cursor: pointer;
+            flex: 1;
+            width: 150%;
+            max-width: 300px;
+        }
+
+        .botonsalir{
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #ae1515;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        #time{
+            margin-left: 253px;
+            margin-top: -18px;
+            color: red;
+            font-family: Verdana, Arial, sans-serif;
+        }
+        #tiempoconectado{
+            font-family: Verdana, Arial, sans-serif;
         }
 
         .boton:hover {
@@ -171,7 +202,11 @@
         .premio {
             margin-bottom: 10px;
         }
-
+        #imagenpoke{
+            margin-right: 900px;
+            margin-top: 10px;
+            width: 15%
+        }
         #historial-cerrar-modal {
             padding: 10px 20px;
             font-size: 18px;
@@ -186,7 +221,22 @@
         #historial-cerrar-modal:hover {
             background-color: #45a049;
         }
-
+        .boton {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: red ;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+        .boton:hover {
+            transform: scale(1.2);
+            
+        }
+        h1 {
+            font-family: 'Press Start 2P', cursive;
+        }
         #coin-counter {
             position: absolute;
             top: 20px;
@@ -203,23 +253,25 @@
 
 <body>
     <div style="text-align: center;">
-        <h1 style="font-size: 80px; font-weight: bold; color: #FF0000; padding-right: 33pc;">¡BIENVENIDOS!</h1>
-    </div>
+    <img id="imagenpoke" src="https://cdn.discordapp.com/attachments/963175598627360778/1125972853997715547/logo.png" >
     <div id="botones-container">
         <button id="boton1" class="boton">JUGAR</button>
+        <button id="boton3" class="boton">Pokedex</button>
         <button id="boton-historial" class="boton">HISTORIAL DE PREMIOS</button>
         <button id="boton2" class="boton">INFORMACIÓN DE JUGADOR</button>
+        
     </div>
     <div id="reloj-container">
         <div id="reloj">
         <img src="https://media.tenor.com/neir67NC49wAAAAC/ruleta.gif" alt="Imagen del reloj">
         </div>
-        <button id="boton-girar" class="boton" style="background-color: #00BFFF;">GIRAR</button>
-        <p id="temporizador" style="text-align: center; font-size: 24px;">Presione para girar</p>
+        <button id="boton-girar" class="boton" style="background-color: #00BFFF; margin-right: 300px; margin-top: -10px;">GIRAR</button>
+        <p id="temporizador" style="text-align: center; font-size: 24px; margin-right: 300px; margin-top: -8px; color: red;">Presione para girar</p>
     </div>
-    <button id="boton4" class="boton">SALIR</button>
-    <div id="coin-counter">Monedas: <span id="coin-count">0</span></div>
-
+    <button id="boton4" class="botonsalir">SALIR</button>
+    <div id="coin-counter">Monedas: <span id="coin-count">0</span>    </div>
+    <span id="tiempoconectado" style="color: red;"  >Tiempo conectado:</span>
+        <p id="time"></p>
     <!-- Ventana modal de premio -->
     <div id="premio-modal">
         <div id="premio-texto"></div>
@@ -256,12 +308,14 @@
                         iniciarTemporizador();
                     }
                 }, 1000);
+
+             
             }
 
             function girarReloj() {
                 if (girarPermitido) {
                     girarPermitido = false;
-                    tiempoRestante = 60;
+                    tiempoRestante =  ;
 
                     var premioGanado = premios[Math.floor(Math.random() * premios.length)];
                     historialPremios.push(premioGanado); // Agregar premio al historial
@@ -289,6 +343,8 @@
                         iniciarTemporizador();
                     }, 2000);
                 }
+              
+
             }
 
             function mostrarHistorial() {
@@ -300,11 +356,15 @@
                 $("#historial-modal").addClass("show-modal");
             }
 
-            $("#boton1").click(function() {
+            $("#boton3").click(function() {
                 window.location.href = "http://pokemon.test/pokedex";
             });
             $("#boton2").click(function() {
                 window.location.href = "http://pokemon.test/perfil";
+            });
+            $("#boton4").click(function() {
+                alert("¡HASTA LUEGO!");
+                window.location.href = "http://pokemon.test/login";
             });
             $("#boton-historial").click(mostrarHistorial);
 
@@ -318,9 +378,39 @@
                 $("#historial-modal").removeClass("show-modal");
             });
 
-            $("#boton4").click(function() {
-                alert("¡HASTA LUEGO!");
-            });
+        
+        });
+
+        // JavaScript para el cálculo del tiempo conectado
+        window.addEventListener("DOMContentLoaded", function() {
+            var startTime;
+
+            // Verificar si ya hay un estado almacenado en el historial
+            if (window.history.state && window.history.state.startTime) {
+                startTime = new Date(window.history.state.startTime); // Obtener la hora de inicio almacenada en el estado del historial
+            } else {
+                startTime = new Date(); // Hora en que se cargó la página
+                window.history.replaceState({ startTime: startTime }, ""); // Almacenar la hora de inicio en el estado del historial
+            }
+
+            function updateTime() {
+                var currentTime = new Date(); // Hora actual
+                var timeDiff = currentTime - startTime; // Diferencia de tiempo en milisegundos
+                var seconds = Math.floor(timeDiff / 1000); // Cálculo de segundos
+                var minutes = Math.floor(seconds / 60); // Cálculo de minutos
+                var hours = Math.floor(minutes / 60); // Cálculo de horas
+
+                // Formateo de tiempo
+                hours %= 24;
+                minutes %= 60;
+                seconds %= 60;
+
+                // Actualización del elemento en la página
+                document.getElementById("time").textContent = hours + "h " + minutes + "m " + seconds + "s";
+            }
+
+            // Actualizar el tiempo cada segundo
+            setInterval(updateTime, 1000);
         });
     </script>
 </body>
