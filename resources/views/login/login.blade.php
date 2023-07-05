@@ -1,269 +1,266 @@
-<head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/js/bootstrap.min.js"></script>
-    <style>
-        body {
-            font-family: "Lato", sans-serif;
-            background-image: url('{{ asset('imagenes/imagen_pokemon.jpg') }}');
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
+<!DOCTYPE html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
 
-        .main-head {
-            height: 150px;
-            background: #FFF;
-
-        }
-
-        .sidenav {
-            height: 100%;
-            overflow-x: hidden;
-            padding-top: 20px;
-        }
+        <style>
+            body {
+                font-family: "Lato", sans-serif;
+                background-image: url('{{ asset('imagenes/imagen_pokemon.jpg') }}');
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
 
 
-        .main {
-            padding: 0px 10px;
-        }
 
-        @media screen and (max-height: 450px) {
+            .main-head {
+                height: 150px;
+                background: #FFF;
+
+            }
+
             .sidenav {
-                padding-top: 15px;
-            }
-        }
-
-        @media screen and (max-width: 450px) {
-            .login-form {
-                margin-top: 10%;
+                height: 100%;
+                overflow-x: hidden;
+                padding-top: 20px;
             }
 
-            .register-form {
-                margin-top: 10%;
-            }
-        }
 
-        @media screen and (min-width: 768px) {
             .main {
-                margin-left: 40%;
+                padding: 0px 10px;
             }
 
-            .sidenav {
-                width: 40%;
-                position: fixed;
-                z-index: 1;
+            @media screen and (max-height: 450px) {
+                .sidenav {
+                    padding-top: 15px;
+                }
+            }
+
+            @media screen and (max-width: 450px) {
+                .login-form {
+                    margin-top: 10%;
+                }
+
+                .register-form {
+                    margin-top: 10%;
+                }
+            }
+
+            @media screen and (min-width: 768px) {
+                .main {
+                    margin-left: 40%;
+                }
+
+                .sidenav {
+                    width: 40%;
+                    position: fixed;
+                    z-index: 1;
+                    top: 0;
+                    left: 0;
+                }
+
+                .login-form {
+                    margin-top: 80%;
+                }
+
+                .register-form {
+                    margin-top: 20%;
+                }
+            }
+
+            /*Formulario*/
+
+            .login-main-text {
+                margin-top: 20%;
+                padding: 20px;
+                color: rgb(0, 0, 0);
+            }
+
+            .login-main-text h2 {
+                font-weight: 300;
+            }
+
+            .btn-black {
+                background-color: rgb(255, 202, 0) !important;
+                color: rgb(0, 0, 0);
+            }
+
+            .btn-secondary {
+                background-color: rgb(225, 225, 225) !important;
+                color: rgb(0, 0, 0);
+            }
+
+            label {
+                color: black
+            }
+
+            .custom-image {
+                position: absolute;
+                top: 67%;
+                left: 55%;
+                width: 25%;
+                hi transform: translate(-50%, -50%);
+            }
+
+
+
+            /*Inputs del formulario*/
+            .pokemon-input {
+                position: relative;
+                margin-bottom: 20px;
+            }
+
+            .pokemon-input input {
+                font-size: 18px;
+                padding: 10px;
+                width: 100%;
+                border: none;
+                border-bottom: 2px solid #fbb040;
+                outline: none;
+                background-color: transparent;
+                color: #fff;
+            }
+
+            .pokemon-input label {
+                position: absolute;
                 top: 0;
                 left: 0;
+                font-size: 18px;
+                padding: 14px;
+                color: #fbb040;
+                pointer-events: none;
+                transition: 0.2s ease all;
             }
 
-            .login-form {
-                margin-top: 80%;
+            .pokemon-input input:focus+label,
+            .pokemon-input input:not(:placeholder-shown)+label {
+                transform: translateY(-25px);
+                font-size: 12px;
             }
 
-            .register-form {
-                margin-top: 20%;
+            .pokemon-input span {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background-color: #fbb040;
+                transform: scaleX(0);
+                transition: 0.2s ease all;
             }
-        }
 
-        /*Formulario*/
+            .pokemon-input input:focus+span,
+            .pokemon-input input:not(:placeholder-shown)+span {
+                transform: scaleX(1);
+            }
 
-        .login-main-text {
-            margin-top: 20%;
-            padding: 20px;
-            color: rgb(0, 0, 0);
-        }
+            .contrasena .toggle-password {
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 10px;
+                color: #fbb040;
+                cursor: pointer;
+                user-select: none;
+            }
 
-        .login-main-text h2 {
-            font-weight: 300;
-        }
+            .contrasena .toggle-password i {
+                pointer-events: none;
+            }
 
-        .btn-black {
-            background-color: rgb(255, 202, 0) !important;
-            color: rgb(0, 0, 0);
-        }
+            /*Imagenes*/
 
-        .btn-secondary {
-            background-color: rgb(225, 225, 225) !important;
-            color: rgb(0, 0, 0);
-        }
+            .logo_pokemon {
+                width: 60%;
+                /* Reduce el ancho a la mitad */
+                height: auto;
+                /* Mantiene la proporción original de la imagen */
+            }
+        </style>
+    </head>
 
-        label {
-            color: black
-        }
-
-        .custom-image {
-            position: absolute;
-            top: 67%;
-            left: 55%;
-            width: 25%;
-            hi transform: translate(-50%, -50%);
-        }
-
-
-
-        /*Inputs del formulario*/
-        .pokemon-input {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .pokemon-input input {
-            font-size: 18px;
-            padding: 10px;
-            width: 100%;
-            border: none;
-            border-bottom: 2px solid #fbb040;
-            outline: none;
-            background-color: transparent;
-            color: #fff;
-        }
-
-        .pokemon-input label {
-            position: absolute;
-            top: 0;
-            left: 0;
-            font-size: 18px;
-            padding: 14px;
-            color: #fbb040;
-            pointer-events: none;
-            transition: 0.2s ease all;
-        }
-
-        .pokemon-input input:focus+label,
-        .pokemon-input input:not(:placeholder-shown)+label {
-            transform: translateY(-25px);
-            font-size: 12px;
-        }
-
-        .pokemon-input span {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #fbb040;
-            transform: scaleX(0);
-            transition: 0.2s ease all;
-        }
-
-        .pokemon-input input:focus+span,
-        .pokemon-input input:not(:placeholder-shown)+span {
-            transform: scaleX(1);
-        }
-
-        .password-input .toggle-password {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 10px;
-            color: #fbb040;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .password-input .toggle-password i {
-            pointer-events: none;
-        }
-
-        /*Imagenes*/
-
-        .logo_pokemon {
-            width: 60%;
-            /* Reduce el ancho a la mitad */
-            height: auto;
-            /* Mantiene la proporción original de la imagen */
-        }
-    </style>
-</head>
-
-<body>
-    <div class="sidenav">
-        <div class="login-main-text">
-            <img class="logo_pokemon" src="{{ asset('imagenes/imagen_logo_pokemon.png') }}">
+    <body>
+        <div class="sidenav">
+            <div class="login-main-text">
+                <img class="logo_pokemon" src="{{ asset('imagenes/imagen_logo_pokemon.png') }}">
 
 
-            <div class="container">
-                <img src="/imagenes/imagen_pikachu.png" alt="Imagen" class="custom-image">
+                <div class="container">
+                    <img src="/imagenes/imagen_pikachu.png" alt="Imagen" class="custom-image">
+                </div>
+
+
+
             </div>
-
-
-
         </div>
-    </div>
-    <div class="main">
-        <div class="col-md-6 col-sm-12">
-            <div class="login-form">
-                <form id="frm_login">
-                    <div class="form-group">
-                        <div class="pokemon-input">
-                            <input type="text" placeholder=" ">
-                            <label>Nombre Usuario</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="pokemon-input password-input">
-                                <input type="password" placeholder=" " id="password-input">
-                                <label>Contraseña</label>
-                                <span class="toggle-password" onclick="togglePasswordVisibility()"><i
-                                        class="fas fa-eye"></i></span>
+        <div class="main">
+            <div class="col-md-6 col-sm-12">
+                <div class="login-form">
+                    <form id="frm_login">
+
+                        <div class="form-group">
+                            <div class="pokemon-input">
+                                <input name="nombre" id="nombre" type="text" placeholder=" ">
+                                <label>Nombre Usuario</label>
                             </div>
                         </div>
-                    </div>
-                    <button type="submit" id="btn_ingresar" class="btn btn-black">Ingresar</button>
-                    <a class="btn btn-secondary" href="{{ route('registrarse.create') }}">Registrarse</a>
-                </form>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="pokemon-input contrasena">
+                                    <input type="password" placeholder=" " name="contrasena" id="contrasena">
+                                    <label>contraseña</label>
+                                    <span class="toggle-password" onclick="togglePasswordVisibility()"><i
+                                            class="fas fa-eye"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" id="btn_ingresar" name="btn_ingresar" class="btn btn-black">Ingresar</button>
+                        <a class="btn btn-secondary" href="http://pokemon.test/registrarse">Registrarse</a>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    <script>
-        $(document).ready(function() {
-            $('#Ver_Contraseña').click(function(event) {
-                event.preventDefault();
+        <script>
+            $(document).ready(function() {
+                var maxIntentos = 3;
+                var intentos = 0;
+                $('#btn_ingresar').click(function(event) {
+                    event.preventDefault();
 
-                function togglePasswordVisibility() {
-                    var passwordInput = $("#password-input");
-                    var toggleIcon = $(".toggle-password i");
 
-                    if (passwordInput.attr("type") === "password") {
-                        passwordInput.attr("type", "text");
-                        toggleIcon.removeClass("fa-eye");
-                        toggleIcon.addClass("fa-eye-slash");
-                    } else {
-                        passwordInput.attr("type", "password");
-                        toggleIcon.removeClass("fa-eye-slash");
-                        toggleIcon.addClass("fa-eye");
+                    var nombre = $("#nombre").val();
+                    var contrasena = $("#contrasena").val();
+
+                    if (nombre == "") {
+                        alert("Ingrese su usuario");
+                        nombre.focus();
+                    } else if (contrasena == "") {
+                        alert("Ingrese su contrasena");
+                        contrasena.focus();
+                    }else{
+                        $.getJSON('http://pokemon.test/api/Usuario', function(json) {
+                            for (var i = 0; i < json.length; i++) {
+                                if (nombre.toLowerCase() == json[i].nombre.toLowerCase()) {
+                                    if (contrasena == json[i].contrasena) {
+                                        window.location.href = "http://pokemon.test/registrarse";
+                                    } else {
+                                        intentos ++;
+                                        if (intentos >= maxIntentos) {
+                                            // Se han superado los intentos máximos, redirigir a otra página
+                                            window.location.href = "http://google.com/";
+                                        } else {
+                                            alert("Contraseña incorrecta. Intento " + intentos + " de " + maxIntentos);
+                                        }
+                                    }
+                                }
+                            }
+                        });
                     }
-                }
+                });
             });
-
-            $('#btn_ingresar').click(function(event) {
-                event.preventDefault();
-
-                var nombre_usuario = $("#inp_nombre_usuario");
-                var contraseña = $("#inp_contraseña");
-
-                if (nombre_usuario.val() == "") {
-                    alert("Ingrese su usuario");
-                    nombre_usuario.focus();
-                } else if (contraseña.val() == "") {
-                    alert("Ingrese su contraseña");
-                    contraseña.focus();
-                } else {
-
-                    var frm_login = $("#frm_login").serialize();
-                    console.log(frm_login);
-                }
-
-
-
-            });
-        });
-    </script>
-</body>
+        </script>
+    </body>
+</html>

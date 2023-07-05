@@ -4,18 +4,17 @@
 <head>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script>
-        type = "test/javascript"
-        src = "funciones.js"
-
+    type = "test/javascript"
+    src= "funciones.js"
     </script>
     <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <title>Registrarse</title>
+
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
+    <title>Registrarse</title>
 
 
     <title>Registrarse</title>
@@ -223,21 +222,21 @@
                     contraseña2.focus();
                 } else {
                     //console.log(frm_usuario)
-
-                    $.post( "http://pokemon.test/api/Usuario",
-                    $( "#frm_usuario" ).serialize() )
-                        .done(function(data){
-                        alert("se ha guardado correctamente");
-                        var url = "http://pokemon.test/login";
-                        $(location).attr('href',url);
-                    });
                 }
 
             });
 
+            $("#frm_usuario").submit(function() {
+                event.preventDefault();
 
-
-
+                $.post( "http://pokemon.test/api/Usuario",
+                    $( "#frm_usuario" ).serialize() )
+                        .done(function(data){
+                        alert("se ha guardado correctamente");
+                        var url = "http://pokemon.test/login";
+                    $(location).attr('href',url);
+                });
+            });
         });
 
 
