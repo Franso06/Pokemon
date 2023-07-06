@@ -190,77 +190,88 @@
 
     </style>
 
-    <script>
+<script>
+    $(document).ready(function() {
 
-        $(document).ready(function() {
+        $("#btn_registrarse").click(function() {
+            event.preventDefault();
 
-            $("#btn_registrarse").click(function() {
-                event.preventDefault();
+            var nombre = $("#nombre");
+            var correo = $("#correo");
+            var contrasena = $("#contrasena");
+            var contrasena2 = $("#contrasena2");
 
-                var nombre = $("#nombre");
-                var correo = $("#correo");
-                var contrasena = $("#contrasena");
-                var contrasena2 = $("#contrasena2");
-
-                if (nombre.val() == "") {
-                    alert("Error en el nombre de usuario.");
-                    nombre.focus();
-                } else if (correo.val() == "") {
-                    alert("Error en el correo electrónico.");
-                    correo.focus();
-                } else if (validarCorreo(correo.val()) == false) {
-                    alert("Correo no válido.");
-                    correo.focus();
-                } else if (contrasena.val() == "") {
-                    alert("Error en la contraseña.");
-                    contrasena.focus();
-                } else if (contrasena2.val() == "") {
-                    alert("No ha ingresado nuevamente su contraseña.");
-                    contrasena2.focus();
-                } else if (contrasena.val() != contrasena2.val()) {
-                    alert("Las contraseñas deben ser iguales");
-                    contrasena2.focus();
-                } else {
-                    //console.log(frm_usuario)
-                    $.post("http://pokemon.test/api/Usuario", $("#frm_usuario").serialize())
-                        .done(function({
-                            nombre: nombre,
-                            norreo: correo,
-                            nontrasena: contrasena
-                        }) {
-                            alert("se ha guardado correctamente");
-                            var url = "http://pokemon.test/login";
-                            window.location.href = url;
-                        });
-                }
-
-            });
-
-/*             $("#frm_usuario").submit(function() {
-                event.preventDefault();
-
-                $.post( "http://pokemon.test/api/Usuario",
-                    $( "#frm_usuario" ).serialize() )
-                        .done(function(data){
+            if (nombre.val() == "") {
+                alert("Error en el nombre de usuario.");
+                nombre.focus();
+            } else if (correo.val() == "") {
+                alert("Error en el correo electrónico.");
+                correo.focus();
+            } else if (validarCorreo(correo.val()) == false) {
+                alert("Correo no válido.");
+                correo.focus();
+            } else if (contrasena.val() == "") {
+                alert("Error en la contraseña.");
+                contrasena.focus();
+            }else if (validarContrasena(contrasena.val()) == false) {
+                alert("Su contraseña no cumple con los requisitos. Debe tener al menos 8 caracteres y números.");
+                contrasena.focus();
+            } else if (contrasena2.val() == "") {
+                alert("No ha ingresado nuevamente su contraseña.");
+                contrasena2.focus();
+            } else if (contrasena.val() != contrasena2.val()) {
+                alert("Las contraseñas deben ser iguales");
+                contrasena2.focus();
+            } else {
+                //console.log(frm_usuario)
+                $.post("http://pokemon.test/api/Usuario", $("#frm_usuario").serialize())
+                    .done(function({
+                        nombre: nombre,
+                        norreo: correo,
+                        nontrasena: contrasena
+                    }) {
                         alert("se ha guardado correctamente");
                         var url = "http://pokemon.test/login";
-                    $(location).attr('href',url);
-                });
-            }); */
+                        window.location.href = url;
+                    });
+            }
+
         });
 
+        /*             $("#frm_usuario").submit(function() {
+                        event.preventDefault();
+
+                        $.post( "http://pokemon.test/api/Usuario",
+                            $( "#frm_usuario" ).serialize() )
+                                .done(function(data){
+                                alert("se ha guardado correctamente");
+                                var url = "http://pokemon.test/login";
+                            $(location).attr('href',url);
+                        });
+                    }); */
+    });
 
 
-        function validarCorreo(valor) {
-            if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-                .test(valor)) {
-                return true;
-            } else {
-                return false;
-            }
+
+    function validarCorreo(valor) {
+        if (/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+            .test(valor)) {
+            return true;
+        } else {
+            return false;
         }
+    }
 
+    function validarContrasena(valor) {
+        // Expresión regular para validar la contraseña
+        var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
+        if (regex.test(valor)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 </script>
 
 
