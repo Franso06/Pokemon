@@ -19,18 +19,5 @@ class Usuarios extends Model
     return $this->hasMany(UserItemsPokemon::class, 'user_id');
     }
 
-    protected static function boot()
-{
-    parent::boot();
-
-    static::created(function ($usuario) {
-        $ultimoUsuario = self::latest()->first();
-
-        $usuario->userItemsPokemons()->create([
-            'user_id' => $ultimoUsuario->id,
-            'item_id' => $itemId, // ID del item deseado
-            'pokemon_id' => $pokemonId, // ID del pokemon deseado
-        ]);
-    });
-}
+   
 }
