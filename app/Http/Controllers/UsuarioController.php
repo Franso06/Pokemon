@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
+use App\Models\UsuarioItemsPokemon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -24,6 +25,18 @@ class UsuarioController extends Controller
     {
         //return Usuario::findorFail();
         return view('login.registrarse');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+    
+        static::created(function ($usuario) {
+            UsuarioItemsPokemon::create([
+                'user_id' => $usuario->id,
+                // Otros valores que desees asignar en la tabla
+            ]);
+        });
     }
 
     /**
@@ -51,7 +64,7 @@ class UsuarioController extends Controller
         return redirect()->route('login.index');
 
     }
-
+    
     /**
      * Display the specified resource.
      */
