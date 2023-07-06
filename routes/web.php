@@ -14,16 +14,14 @@ use App\Http\Controllers\UsuarioController;
 |
 */
 
-
+Route::get('/', function () {
+    return view('login.login');
+});
 
 
 //Route::get('registrarse/create',[UsuarioController::class,'create'])->name('registrarse.create');
 //Route::post('registrarse',[UsuarioController::class,'store'])->name('registrarse.store');
 //Route::get('login', [UsuarioController::class,'login'])->name('login.index');
-
-//Route::get('/registrarse', function () {
-//=======
-// Route::get('/','ItemsController@index');  
 
 Route::get('/login/registrarse', function () {
     return view('login.registrarse');

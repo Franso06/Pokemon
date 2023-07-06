@@ -22,5 +22,5 @@ class Usuario extends Model
     {
     return $this->hasMany(UserItemsPokemon::class, 'user_id');
     }
-
+    
 }
