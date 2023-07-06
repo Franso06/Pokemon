@@ -237,18 +237,6 @@
             }
 
         });
-
-        /*             $("#frm_usuario").submit(function() {
-                        event.preventDefault();
-
-                        $.post( "http://pokemon.test/api/Usuario",
-                            $( "#frm_usuario" ).serialize() )
-                                .done(function(data){
-                                alert("se ha guardado correctamente");
-                                var url = "http://pokemon.test/login";
-                            $(location).attr('href',url);
-                        });
-                    }); */
     });
 
 
@@ -317,14 +305,14 @@
                         </div>
                         <div class="form-group">
                             <div class="pokemon-input">
-                                <input id="contrasena" name="contrasena" type="text" placeholder=" ">
+                                <input id="contrasena" name="contrasena" type="password" placeholder=" ">
                                 <label>Contraseña</label>
                             </div>
                             <div id="contrasena_help_block" class="form-text" style=""></div>
                         </div>
                         <div class="form-group">
                             <div class="pokemon-input">
-                                <input  id="contrasena2" name="contrasena2" type="text" placeholder=" ">
+                                <input  id="contrasena2" name="contrasena2" type="password" placeholder=" ">
                                 <label>Reingrese su contrasena</label>
                             </div>
                             <div id="contrasena2_help_block" class="form-text" style=""></div>
