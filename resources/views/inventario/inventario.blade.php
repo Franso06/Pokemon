@@ -56,8 +56,11 @@
     }
 
     .item-container {
-        display: block;
-        grid-template-columns: 1fr 1fr 1fr;
+        display: grid;
+        grid-template-columns: 200px 200px;
+        grid-row: auto auto;
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
         gap: 30px;
         width: 80%;
         margin-left: auto;
@@ -65,6 +68,7 @@
         margin-bottom: 40px;
         margin-top: auto;
         padding-top: 10px;
+
     }
 
     .item-block,
@@ -139,7 +143,7 @@
             </tr>
             
         @endforeach --}}
-        
+
     </div>
 </body>
 
@@ -149,13 +153,6 @@
         .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => console.log(error))
-    const mostrarData = (data) => {
-        console.log(data)
-        let body = ''
-        for (let i = 0; i < data.lenght; i++) {
-            body += `<tr><td>${data[i].id}</td></tr>`
-        }
-    }
 </script>
 
 <script>
@@ -196,6 +193,7 @@
         'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png'
     ]; //your assumed array
     var monedas = 1000;
+    var cont = 0;
     $("#coin-count").text(monedas);
 
 
@@ -218,13 +216,18 @@
         var card = document.createElement('div', []);
         card.classList.add('item-block');
 
+        var contador = document.createElement('p');
+        contador.classList.add('contador');
+        contador.textContent = cont;
+
+
         const comprar = document.createElement('button');
         comprar.classList.add('btn-light');
         comprar.setAttribute('id', `${items[i].nombre}`);
         comprar.addEventListener("click", (event) => {
             console.log(`Compraste: ${comprar.id}`);
-
-
+            cont=cont+1;
+            // contador.textContent = cont;
 
             $("#coin-count").text(monedas);
             if (monedas <= 0) {
@@ -243,11 +246,11 @@
         efecto.classList.add('efecto');
         efecto.textContent = JSON.stringify(items[i].efecto).replace(/['"]+/g, '');
 
-
         card.appendChild(sprite);
         card.appendChild(name);
         card.appendChild(efecto);
         card.appendChild(comprar);
+        card.appendChild(contador);
         itemContainer.appendChild(card);
     }
 </script>
