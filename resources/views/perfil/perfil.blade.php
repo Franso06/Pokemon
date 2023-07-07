@@ -23,9 +23,12 @@
     <style>
         body {
             font-family: "Lato", sans-serif;
-            background-image: url("fondo.jpg");
+            /* background-image: url("fondo.jpg"); */
             background-repeat: no-repeat;
             background-size: cover;
+            background-color: #2f2f2f;
+            border-bottom: 2px solid #fbb040;
+            color: #fff;
         }
         .main-head {
             height: 150px;
@@ -121,7 +124,7 @@
                 <div class="output_message" id="form-messages"></div>
                     <form id="frm_usuario">
                         <div class="container-perfil">
-                            <h2 style="color: rgb(255, 202, 0)">Gestion de perfil</h2>
+                            <h2 style="color: rgb(255, 202, 0)" id="gestion" class="gestion"></h2>
                             <div class="fotoPerfil">
                                 <img id="imagenPerfil" src="ruta-a-la-imagen-actual.jpg" style="width: 200px; height: 200px;"alt="Foto de perfil">
                                 <input type="file" id="nuevaFotoPerfil" accept="image/*">
@@ -131,14 +134,14 @@
                             <div class="form-group">
                                 <label for="formGroupExampleInput" class="form-label">Nombre</label>
                                 <div class="pokemon-input">
-                                    <input type="text" id="nombre" name="nombre" value="{{ $usuario->nombre }}" readonly>
+                                    <input class="nombre" id="nombre" readonly>
                                     <button id="btn_guardar" class="btn btn-black" type="button" onclick="habilitarEdicion('nombre')">Editar</button><br>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="formGroupExampleInput" class="form-label">Correo</label>
                                 <div class="pokemon-input">
-                                    <input type="correo" id="correo" name="correo" value="{{ $usuario->correo }}" readonly>
+                                    <input class="correo" id="correo" readonly>
                                     <button id="btn_guardar" class="btn btn-black" type="button" onclick="habilitarEdicion('correo')">Editar</button><br>
                                 </div>
                                 <div id="correo_help_block" class="form-text" style=""></div>
@@ -146,7 +149,7 @@
                             <div class="form-group">
                                 <label for="formGroupExampleInput" class="form-label">Contraseña</label>
                                 <div class="pokemon-input">
-                                    <input type="password" id="contrasena" name="contrasena" value="{{ $usuario->contrasena }}" readonly>
+                                    <input type="password" class="contrasena" id="contrasena" readonly>
                                     <button id="btn_guardar" class="btn btn-black" type="button" onclick="habilitarEdicion('contrasena')">Editar</button><br>
                                 </div>
                                 <div id="contraseña_help_block" class="form-text" style=""></div>
@@ -174,6 +177,7 @@ function cambiarFotoPerfil() {
     reader.readAsDataURL(file);
 }
 function habilitarEdicion(campo) {
+    
     var input = document.getElementById(campo);
     var button = input.nextElementSibling;
 
@@ -195,9 +199,17 @@ let url = 'http://pokemon.test/api/Usuario'
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            $('#nombre').val(data[0].nombre);
-            $('#correo').val(data[0].correo);
-            $('#contrasena').val(data[0].contrasena);
+            // let index= data[0];
+            $('#nombre').attr('placeholder',data[0].nombre);
+            $('#nombre').attr('readonly', false);
+            $('#correo').attr('placeholder',data[0].correo);
+            $('#contrasena').attr('placeholder',data[0].contrasena);
+            $('#gestion').text('Usuario: '+data[0].nombre);
+            
+
+            console.log(data[0].contrasena);
+
+            
         })
         .catch(error => console.log(error))
 </script>
