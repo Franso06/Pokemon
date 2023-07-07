@@ -131,14 +131,14 @@
                             <div class="form-group">
                                 <label for="formGroupExampleInput" class="form-label">Nombre</label>
                                 <div class="pokemon-input">
-                                    <input type="text" id="nombre" name="nombre" readonly>
+                                    <input type="text" id="nombre" name="nombre" value="{{ $usuario->nombre }}" readonly>
                                     <button id="btn_guardar" class="btn btn-black" type="button" onclick="habilitarEdicion('nombre')">Editar</button><br>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="formGroupExampleInput" class="form-label">Correo</label>
                                 <div class="pokemon-input">
-                                    <input type="correo" id="correo" name="correo" readonly>
+                                    <input type="correo" id="correo" name="correo" value="{{ $usuario->correo }}" readonly>
                                     <button id="btn_guardar" class="btn btn-black" type="button" onclick="habilitarEdicion('correo')">Editar</button><br>
                                 </div>
                                 <div id="correo_help_block" class="form-text" style=""></div>
@@ -146,7 +146,7 @@
                             <div class="form-group">
                                 <label for="formGroupExampleInput" class="form-label">Contraseña</label>
                                 <div class="pokemon-input">
-                                    <input type="password" id="contrasena" name="contrasena" readonly>
+                                    <input type="password" id="contrasena" name="contrasena" value="{{ $usuario->contrasena }}" readonly>
                                     <button id="btn_guardar" class="btn btn-black" type="button" onclick="habilitarEdicion('contrasena')">Editar</button><br>
                                 </div>
                                 <div id="contraseña_help_block" class="form-text" style=""></div>
@@ -190,6 +190,16 @@ function habilitarEdicion(campo) {
           guardarCambios(campo);
         });
     }
+}
+$(document).ready(function() {
+      cargarDatosUsuario();
+    });
+function cargarDatosUsuario() {
+    $.getJSON('http://sitio2.test/api/Usuario', function(json) {
+    $('#nombre').val(json[0].nombre);
+    $('#correo').val(json[0].correo);
+    $('#contrasena').val(json[0].contrasena);
+    });
 }
 </script>
 </html>
