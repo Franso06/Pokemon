@@ -23,12 +23,12 @@
     <style>
         body {
             font-family: "Lato", sans-serif;
-            /* background-image: url("fondo.jpg"); */
+            background-image: url("fondo.jpg");
             background-repeat: no-repeat;
             background-size: cover;
-            background-color: #2f2f2f;
-            border-bottom: 2px solid #fbb040;
-            color: #fff;
+            /* background-color: #2f2f2f; */
+            /* border-bottom: 2px solid #fbb040; */
+            /* color: #fff; */
         }
         .main-head {
             height: 150px;
@@ -120,6 +120,16 @@
             cursor: pointer;
             user-select: none;
         }
+        .container-perfil{
+            position: relative;
+            left: -600px;
+            top:  170px;
+        }
+        .form-perfil{
+            position: relative;
+            left: 200px;
+            top: -300px;
+        }
     </style>
 </head>
 <body>
@@ -127,41 +137,45 @@
         <div class="col-md-6 col-sm-12">
             <div class="login-form">
                 <div class="output_message" id="form-messages"></div>
-                    <form id="frm_usuario">
-                        <div class="container-perfil">
-                            <h2 style="color: rgb(255, 202, 0)" id="gestion" class="gestion"></h2>
-                            <div class="fotoPerfil">
-                                <img id="imagenPerfil" src="ruta-a-la-imagen-actual.jpg" style="width: 200px; height: 200px;"alt="Foto de perfil">
-                                <input type="file" id="nuevaFotoPerfil" accept="image/*">
-                                <button id="btn_guardar" class="btn btn-black" type="button" onclick="cambiarFotoPerfil()">Guardar</button>
-                            </div>
+                    <div class="container-perfil">
+                        <h2 style="color: rgb(255, 202, 0)" id="gestion" class="gestion"></h2>
+                        <div class="fotoPerfil">
+                            <img id="imagenPerfil" src="https://heraldodemexico.com.mx/u/fotografias/m/2021/6/9/f768x1-382285_382412_5050.jpg" style="width: 350px; height: 350px;"alt="Foto de perfil">
+                            <input type="file" id="nuevaFotoPerfil" accept="image/*">
+                            <button id="btn_guardar" class="btn btn-black" type="button" onclick="cambiarFotoPerfil()">Guardar</button>
                         </div>
+                     </div>
+                    <form id="frm_usuario">
+                        <div class="form-perfil">
                             <div class="form-group">
-                                <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                                <h3 for="formGroupExampleInput" class="form-label" style="color:black">Nombre</h3>
                                 <div class="pokemon-input">
                                     <input class="nombre" id="nombre" readonly>
                                     <button id="btn_guardar" class="btn btn-black" type="button" onclick="habilitarEdicion('nombre')">Editar</button><br>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="formGroupExampleInput" class="form-label">Correo</label>
+                                <h3 for="formGroupExampleInput" class="form-label" style="color:black">Correo</h3>
                                 <div class="pokemon-input">
                                     <input class="correo" id="correo" readonly>
                                     <button id="btn_guardar" class="btn btn-black" type="button" onclick="habilitarEdicion('correo')">Editar</button><br>
                                 </div>
-                                <div id="correo_help_block" class="form-text" style=""></div>
-                            </div>
                             <div class="form-group">
-                                <label for="formGroupExampleInput" class="form-label">Contraseña</label>
+                                <h3 for="formGroupExampleInput" class="form-label" style="color:black">Contraseña</h3>
                                 <div class="pokemon-input">
                                     <input type="password" class="contrasena" id="contrasena" readonly>
                                     <button id="btn_guardar" class="btn btn-black" type="button" onclick="habilitarEdicion('contrasena')">Editar</button><br>
                                 </div>
-                                <div id="contraseña_help_block" class="form-text" style=""></div>
                             </div>
+<<<<<<< HEAD
+                        </div>    
+                        <a href="/pantalla_principal"><button id="btn_menu" value="Enviar" class="btn btn-black">Volver al menu</button></a>
+                    </form>
+=======
 
                         </form>
                     </div>
+>>>>>>> abefdcf7d8f66defd5ded1f1c1a0edc11f0e22f9
                 </div>
             </div>
             <a href="/pantalla_principal"><button class="btn btn-black" id="volver_atras">Volver</button></a>
