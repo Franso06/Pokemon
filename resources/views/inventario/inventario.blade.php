@@ -56,33 +56,60 @@
     }
 
     .item-container {
+        position: absolute;
+        margin-left: 10%;  
         display: grid;
         grid-template-columns: 200px 200px;
         grid-row: auto auto;
         grid-column-gap: 20px;
         grid-row-gap: 20px;
         gap: 30px;
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 40px;
-        margin-top: auto;
+        width: 500px;
+        height: 500px;
+        */
         padding-top: 10px;
 
+    }
+
+    .pokemon-block,
+    .pokemon-block-back {
+        border-radius: 10px;
+        padding: 10px;
+        background-color: white;
+        box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+        width: 200px;
+        height: 260px;
+    }.pokemon-container {
+        position: absolute;
+        margin-left: 60%;  
+        display: grid;
+        grid-template-columns: 200px 200px;
+        grid-row: auto auto;
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+        gap: 30px;
+        width: 500px;
+        height: 500px;
+        */
+        padding-top: 10px;
     }
 
     .item-block,
     .item-block-back {
         border-radius: 10px;
         padding: 10px;
+        padding-top: 40px;
         background-color: white;
         box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+        width: 200px;
+        height: 260px;
     }
 
     .img-container {
         background-image: url("./blob.svg");
         background-repeat: no-repeat;
         background-position: center;
+        
     }
 
     .item-block p {
@@ -121,6 +148,9 @@
     <div class="item-container">
 
     </div>
+    <div class="pokemon-container">
+
+    </div>
     {{-- <table class="table table-striped table-sm" id="tbl-data">
         <thead>
             <tr>
@@ -135,14 +165,6 @@
     </table> --}}
     <div>
 
-        {{-- @foreach ($Items as $item)
-            <tr>
-                <td scope="row">{{ $item->id }}</td>
-                <td>{{ $item->Nombre }}</td>
-                <td>{{ $item->Efecto }}</td>
-            </tr>
-            
-        @endforeach --}}
 
     </div>
 </body>
@@ -151,8 +173,11 @@
     let url = 'http://pokemon.test/api/items'
     fetch(url)
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+                console.log(data[0].nombre);
+        })
         .catch(error => console.log(error))
+    
 </script>
 
 <script>
@@ -193,7 +218,7 @@
         'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/potion.png'
     ]; //your assumed array
     var monedas = 1000;
-    var cont = 0;
+    var cont = 1;
     $("#coin-count").text(monedas);
 
 
@@ -217,18 +242,19 @@
         card.classList.add('item-block');
 
         var contador = document.createElement('p');
-        contador.classList.add('contador');
-        contador.textContent = cont;
-
+        contador.classList.add('count');
+        contador.setAttribute('id', `${items[i].nombre}`);
+        contador.textContent=cont;
 
         const comprar = document.createElement('button');
         comprar.classList.add('btn-light');
         comprar.setAttribute('id', `${items[i].nombre}`);
-        comprar.addEventListener("click", (event) => {
-            console.log(`Compraste: ${comprar.id}`);
-            cont=cont+1;
-            // contador.textContent = cont;
+        comprar.textContent = "Comprar";
 
+        comprar.addEventListener("click", (event) => {
+            cont=cont+1;
+            console.log(`Compraste: ${comprar.id}`);
+            // contador.getElementById(comprar.id).textContent=cont;
             $("#coin-count").text(monedas);
             if (monedas <= 0) {
                 alert("No se puede seguir comprando");
@@ -236,7 +262,6 @@
                 monedas = monedas - 200;
             }
         });
-        comprar.textContent = "Comprar";
 
         const name = document.createElement('p');
         name.classList.add('name');
@@ -253,4 +278,57 @@
         card.appendChild(contador);
         itemContainer.appendChild(card);
     }
+</script>
+<script>
+    const pokemonContainer = document.querySelector(".pokemon-container");
+
+    function fetchPokemon(id) {
+        fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+            .then((res) => res.json())
+            .then((data) => {
+                createPokemon(data);
+                console.log(data);
+            }); //createItem(data) para ingresar todos los items      
+    }
+
+        fetchPokemon(1);
+        fetchPokemon(4);
+        fetchPokemon(7);
+        fetchPokemon(25);
+    function createPokemon(pokemon) {
+        const card = document.createElement('div');
+        card.classList.add('pokemon-block');
+
+        const spriteContainer = document.createElement('div');
+        spriteContainer.classList.add('img-container');
+
+        const sprite = document.createElement('img');
+        sprite.src = pokemon.sprites.front_default;
+
+        spriteContainer.appendChild(sprite);
+
+        const name = document.createElement('p');
+        name.classList.add('name');
+        name.textContent = pokemon.name;
+
+        const vida = document.createElement('p');
+        vida.classList.add('vida');
+        vida.textContent = "Vida: 1000";
+
+        const daño = document.createElement('p');
+        daño.classList.add('daño');
+        daño.textContent = "Daño: 50";
+
+        const armor = document.createElement('p');
+        armor.classList.add('armor');
+        armor.textContent = "Armadura: 100";
+
+        card.appendChild(spriteContainer);
+        card.appendChild(name);
+        card.appendChild(vida);
+        card.appendChild(daño);
+        card.appendChild(armor);
+        pokemonContainer.appendChild(card);
+    }
+
 </script>
