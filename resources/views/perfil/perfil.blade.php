@@ -45,6 +45,11 @@
             padding: 0px 10px;
             padding-right: 200px;
         }
+        #volver_atras{
+            position: relative;
+            left: 616px;
+            margin-top: -397px;
+        }
         @media screen and (max-height: 450px) {
             .sidenav {
                 padding-top: 15px;
@@ -162,13 +167,19 @@
                                     <button id="btn_guardar" class="btn btn-black" type="button" onclick="habilitarEdicion('contrasena')">Editar</button><br>
                                 </div>
                             </div>
+<<<<<<< HEAD
                         </div>    
                         <a href="/pantalla_principal"><button id="btn_menu" value="Enviar" class="btn btn-black">Volver al menu</button></a>
                     </form>
+=======
+
+                        </form>
+                    </div>
+>>>>>>> abefdcf7d8f66defd5ded1f1c1a0edc11f0e22f9
                 </div>
             </div>
+            <a href="/pantalla_principal"><button class="btn btn-black" id="volver_atras">Volver</button></a>
         </div>
-    </div>
 </body>
 <script>
 //formula para cambiar la foto de perfil 
