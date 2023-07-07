@@ -191,15 +191,14 @@ function habilitarEdicion(campo) {
         });
     }
 }
-$(document).ready(function() {
-      cargarDatosUsuario();
-    });
-function cargarDatosUsuario() {
-    $.getJSON('http://sitio2.test/api/Usuario', function(json) {
-    $('#nombre').val(json[0].nombre);
-    $('#correo').val(json[0].correo);
-    $('#contrasena').val(json[0].contrasena);
-    });
-}
+let url = 'http://pokemon.test/api/Usuario'
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            $('#nombre').val(data[0].nombre);
+            $('#correo').val(data[0].correo);
+            $('#contrasena').val(data[0].contrasena);
+        })
+        .catch(error => console.log(error))
 </script>
 </html>
