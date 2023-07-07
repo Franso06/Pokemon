@@ -155,7 +155,7 @@
                                 <div id="contraseña_help_block" class="form-text" style=""></div>
                             </div>
 
-                                <a href="/pantalla_principal"><button id="btn_menu" type="submit" value="Enviar" class="btn btn-black">Volver al menu</button></a>
+                                <a href="/pantalla_principal"><button id="btn_menu" value="Enviar" class="btn btn-black">Volver al menu</button></a>
                     </form>
                 </div>
             </div>
