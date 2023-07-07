@@ -245,6 +245,8 @@
             font-weight: bold;
             color: #fff;
         }
+     
+
     </style>
     <link href="/index.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -256,20 +258,22 @@
     <img id="imagenpoke" src="https://cdn.discordapp.com/attachments/963175598627360778/1125972853997715547/logo.png" >
     <div id="botones-container">
         <button id="boton1" class="boton">JUGAR</button>
-        <button id="boton3" class="boton">Pokedex</button>
+        <button id="boton3" class="boton">POKEDEX</button>
+        <button id="boton5" class="boton">INVENTARIO</button>
         <button id="boton-historial" class="boton">HISTORIAL DE PREMIOS</button>
         <button id="boton2" class="boton">INFORMACIÓN DE JUGADOR</button>
+        
 
     </div>
     <div id="reloj-container">
         <div id="reloj">
         <img src="https://media.tenor.com/neir67NC49wAAAAC/ruleta.gif" alt="Imagen del reloj">
         </div>
-        <button id="boton-girar" class="boton" style="background-color: #00BFFF; margin-right: 300px; margin-top: -10px;">GIRAR</button>
+        <button id="boton-girar" class="boton" style="background-color: red; margin-right: 300px; margin-top: -10px; ">GIRAR</button>
         <p id="temporizador" style="text-align: center; font-size: 24px; margin-right: 300px; margin-top: -8px; color: red;">Presione para girar</p>
     </div>
     <button id="boton4" class="botonsalir">SALIR</button>
-    <div id="coin-counter">Monedas: <span id="coin-count">0</span>    </div>
+    <div id="coin-counter"style="background-color: red;" >Monedas: <span id="coin-count">0</span>    </div>
     <span id="tiempoconectado" style="color: red;"  >Tiempo conectado:</span>
         <p id="time"></p>
     <!-- Ventana modal de premio -->
@@ -315,7 +319,7 @@
             function girarReloj() {
                 if (girarPermitido) {
                     girarPermitido = false;
-                    tiempoRestante =  60;
+                    tiempoRestante =  600;
 
                     var premioGanado = premios[Math.floor(Math.random() * premios.length)];
                     historialPremios.push(premioGanado); // Agregar premio al historial
@@ -364,6 +368,10 @@
             $("#boton4").click(function() {
                 alert("¡HASTA LUEGO!");
                 window.location.href = "http://pokemon.test/login";
+            });
+            $("#boton5").click(function() {
+                
+                window.location.href = "http://pokemon.test/inventario";
             });
             $("#boton-historial").click(mostrarHistorial);
 
